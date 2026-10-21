@@ -1,30 +1,48 @@
 <section id="projects" class="projects">
-  <h2>{{ 'projects.title' | translate }}</h2>
+  <div class="sec-head">
+    <span>Portfolio</span>
+    <h2>{{ 'projects.title' | translate }}</h2>
+  </div>
   <div class="grid">
     @for (p of projects; track p.id) {
-      <article class="card" [class.featured]="p.featured" data-test="project-card">
-        <img class="shot" [src]="p.image" [alt]="p.name" loading="lazy" />
-        <h3>{{ p.name }}</h3>
-        <p class="summary">{{ p.summary }}</p>
-        <ul class="tech">
-          @for (t of p.tech; track t) { <li>{{ t }}</li> }
-        </ul>
-        <div class="links">
-          @if (p.repoBeUrl) {
-            <a [href]="p.repoBeUrl" target="_blank" rel="noopener" data-test="code-be">
-              {{ 'projects.code' | translate }} · BE
-            </a>
-          }
-          @if (p.repoFeUrl) {
-            <a [href]="p.repoFeUrl" target="_blank" rel="noopener" data-test="code-fe">
-              {{ 'projects.code' | translate }} · FE
-            </a>
-          }
-          @if (p.demoUrl) {
-            <a [href]="p.demoUrl" target="_blank" rel="noopener" class="primary" data-test="demo-link">
-              {{ 'projects.demo' | translate }}
-            </a>
-          }
+      <article class="card" [class.feat]="p.featured" data-test="project-card">
+        <div class="shot-wrap" [class.feat-shot]="p.featured">
+          <img class="shot" [src]="p.image" [alt]="p.name" loading="lazy" />
+        </div>
+        <div class="body" [class.feat-body]="p.featured">
+          <span class="badge">{{
+            p.featured ? 'FLAGSHIP' : p.id === 'infopoint' ? 'IN PRODUZIONE' : 'SIDE PROJECT'
+          }}</span>
+          <h3>{{ p.name }}</h3>
+          <p class="summary">{{ p.summary }}</p>
+          <div class="stack">
+            @for (t of p.tech; track t) {
+              <span>{{ t }}</span>
+            }
+          </div>
+          <div class="links">
+            @if (p.repoBeUrl) {
+              <a [href]="p.repoBeUrl" target="_blank" rel="noopener" data-test="code-be">
+                {{ 'projects.code' | translate }} · BE
+              </a>
+            }
+            @if (p.repoFeUrl) {
+              <a [href]="p.repoFeUrl" target="_blank" rel="noopener" data-test="code-fe">
+                {{ 'projects.code' | translate }} · FE
+              </a>
+            }
+            @if (p.demoUrl) {
+              <a
+                [href]="p.demoUrl"
+                target="_blank"
+                rel="noopener"
+                class="primary"
+                data-test="demo-link"
+              >
+                {{ 'projects.demo' | translate }} →
+              </a>
+            }
+          </div>
         </div>
       </article>
     }

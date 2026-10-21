@@ -1,10 +1,17 @@
 <section id="skills" class="skills">
-  <h2>{{ 'skills.title' | translate }}</h2>
+  <div class="sec-head">
+    <span>Stack</span>
+    <h2>{{ 'skills.title' | translate }}</h2>
+  </div>
   <div class="groups">
     @for (g of groups; track g.key) {
-      <div class="group">
-        <h3>{{ g.key | translate }}</h3>
-        <ul>@for (i of g.items; track i) { <li>{{ i }}</li> }</ul>
+      <div class="scard">
+        <h4>{{ g.key | translate }}</h4>
+        <ul>
+          @for (i of g.items; track i) {
+            <li>{{ i }}</li>
+          }
+        </ul>
       </div>
     }
   </div>

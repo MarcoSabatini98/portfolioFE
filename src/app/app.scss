@@ -6,23 +6,35 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 1rem max(1.5rem, calc((100% - 1040px) / 2));
+  height: 68px;
+  padding: 0 max(1.5rem, calc((100% - 1040px) / 2));
   background: color-mix(in srgb, var(--bg) 85%, transparent);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
 }
 .brand {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: var(--accent-fg);
   font-weight: 800;
+  font-size: 1rem;
   text-decoration: none;
-  color: var(--fg);
+  box-shadow: var(--shadow);
+  flex-shrink: 0;
 }
 nav {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.7rem;
 }
 nav a {
   text-decoration: none;
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.93rem;
+  font-weight: 500;
 }
 nav a:hover {
   color: var(--fg);
@@ -32,22 +44,30 @@ nav a:hover {
   gap: 0.5rem;
 }
 .controls button {
-  background: none;
+  background: var(--card);
   border: 1px solid var(--border);
   color: var(--fg);
-  border-radius: 8px;
-  padding: 0.35rem 0.6rem;
+  border-radius: 9px;
+  padding: 0.4rem 0.6rem;
   cursor: pointer;
+  font-size: 0.82rem;
   font-weight: 600;
+  min-width: 40px;
+  min-height: 40px;
 }
 .foot {
+  border-top: 1px solid var(--border);
   text-align: center;
-  padding: 2rem;
+  padding: 2.5rem 0;
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
 }
-@media (max-width: 560px) {
+@media (max-width: 640px) {
   nav {
     display: none;
+  }
+  .controls button {
+    min-width: 44px;
+    min-height: 44px;
   }
 }

@@ -1,6 +1,9 @@
 <section id="contact" class="contact">
-  <h2>{{ 'contact.title' | translate }}</h2>
-  <p>{{ 'contact.body' | translate }}</p>
+  <div class="sec-head">
+    <span>{{ 'nav.contact' | translate }}</span>
+    <h2>{{ 'contact.title' | translate }}</h2>
+  </div>
+  <p class="body-text">{{ 'contact.body' | translate }}</p>
   <div class="links">
     <a [href]="'mailto:' + email">{{ 'contact.email' | translate }}</a>
     <a [href]="linkedin" target="_blank" rel="noopener">LinkedIn</a>

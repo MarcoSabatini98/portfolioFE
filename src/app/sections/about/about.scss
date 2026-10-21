@@ -1,3 +1,36 @@
-.about { max-width: 720px; margin: 0 auto; padding: 6rem 1.5rem; }
-h2 { font-size: 2rem; margin-bottom: 1.5rem; }
-p { font-size: 1.15rem; color: var(--fg); }
+.about {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(3.5rem, 9vh, 6rem) 1.5rem;
+}
+
+.sec-head {
+  margin-bottom: 1.5rem;
+
+  span {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+    letter-spacing: -0.025em;
+    margin-top: 0.5rem;
+  }
+}
+
+p {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: var(--muted);
+  max-width: 65ch;
+  line-height: 1.75;
+}
+
+@media (max-width: 640px) {
+  .about {
+    padding: 3rem 1rem;
+  }
+}
