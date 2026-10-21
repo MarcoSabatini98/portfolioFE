@@ -1,0 +1,49 @@
+<footer class="footer" id="top">
+  <div class="footer-inner">
+    <!-- Brand block -->
+    <div class="footer-brand">
+      <a routerLink="/" class="brand-tile" aria-label="Home">M</a>
+      <span class="brand-name">Marco Sabatini</span>
+      <p class="brand-tagline">{{ 'footer.tagline' | translate }}</p>
+    </div>
+
+    <!-- Nav column -->
+    <div class="footer-col">
+      <h3 class="col-heading">{{ 'footer.nav' | translate }}</h3>
+      <nav aria-label="Footer navigation">
+        <a routerLink="/">{{ 'nav.home' | translate }}</a>
+        <a routerLink="/progetti">{{ 'nav.projects' | translate }}</a>
+        <a routerLink="/chi-sono">{{ 'nav.about' | translate }}</a>
+        <a routerLink="/contatti">{{ 'nav.contact' | translate }}</a>
+      </nav>
+    </div>
+
+    <!-- Contact column -->
+    <div class="footer-col">
+      <h3 class="col-heading">{{ 'footer.contact' | translate }}</h3>
+      <ul class="contact-list">
+        <li>
+          <a [href]="'mailto:' + email">{{ 'contact.email' | translate }}</a>
+        </li>
+        <li>
+          <a [href]="linkedin" target="_blank" rel="noopener">LinkedIn</a>
+        </li>
+        <li>
+          <a [href]="github" target="_blank" rel="noopener">GitHub</a>
+        </li>
+        <li>
+          <a [href]="cvHref" download (click)="onCvDownload()">{{ 'contact.cv' | translate }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    <span class="copy">© {{ year }} Marco Sabatini</span>
+    <span class="built">Built with Angular 21</span>
+    <button type="button" class="back-top" (click)="scrollTop()" aria-label="Back to top">
+      ↑ Top
+    </button>
+  </div>
+</footer>

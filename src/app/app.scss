@@ -60,13 +60,6 @@ nav a.active {
   min-width: 40px;
   min-height: 40px;
 }
-.foot {
-  border-top: 1px solid var(--border);
-  text-align: center;
-  padding: 2.5rem 0;
-  color: var(--muted);
-  font-size: 0.9rem;
-}
 @media (max-width: 640px) {
   nav {
     display: none;

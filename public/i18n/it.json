@@ -1,5 +1,5 @@
 {
-  "nav": { "projects": "Progetti", "about": "Chi sono", "contact": "Contatti" },
+  "nav": { "home": "Home", "projects": "Progetti", "about": "Chi sono", "contact": "Contatti" },
   "hero": {
     "role": "Full-Stack Developer",
     "tagline": "Costruisco web app con Angular, Node ed Express — testate, con CI/CD, pensate per durare.",
@@ -11,10 +11,21 @@
     "body": "Sviluppatore full-stack junior con una formazione IFTS e un metodo preso sul serio: TypeScript ovunque, test prima del merge, CI/CD e lint come abitudine. Mi piace il lavoro che non si vede — architettura a layer, vincoli di integrità nel database, hardening di sicurezza — perché è lì che un progetto regge nel tempo. Costruisco con Angular, Node/Express e Sequelize. Cerco un team dove continuare a imparare e spedire codice di cui fidarsi."
   },
   "projects": { "title": "Progetti", "code": "Codice", "demo": "Demo live" },
-  "skills": { "title": "Competenze", "frontend": "Frontend", "backend": "Backend", "tooling": "Tooling & Qualità" },
+  "skills": {
+    "title": "Competenze",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "tooling": "Tooling & Qualità"
+  },
   "contact": {
     "title": "Contatti",
     "body": "Aperto a opportunità full-stack, anche remote.",
-    "email": "Email", "cv": "Scarica il CV"
+    "email": "Email",
+    "cv": "Scarica il CV"
+  },
+  "footer": {
+    "tagline": "Full-stack developer. Costruisco web app con Angular, Node ed Express.",
+    "nav": "Naviga",
+    "contact": "Contatti"
   }
 }

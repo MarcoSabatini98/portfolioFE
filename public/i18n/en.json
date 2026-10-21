@@ -1,5 +1,5 @@
 {
-  "nav": { "projects": "Projects", "about": "About", "contact": "Contact" },
+  "nav": { "home": "Home", "projects": "Projects", "about": "About", "contact": "Contact" },
   "hero": {
     "role": "Full-Stack Developer",
     "tagline": "I build full-stack web apps with Angular, Node and Express — tested, CI/CD-driven, built to last.",
@@ -22,5 +22,10 @@
     "body": "Open to full-stack opportunities, remote-friendly.",
     "email": "Email",
     "cv": "Download CV"
+  },
+  "footer": {
+    "tagline": "Full-stack developer. I build web apps with Angular, Node and Express.",
+    "nav": "Navigate",
+    "contact": "Contact"
   }
 }
