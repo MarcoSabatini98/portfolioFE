@@ -28,6 +28,13 @@
     "email": "Email",
     "cv": "Download CV"
   },
+  "detail": {
+    "back": "Back to projects",
+    "problem": "The problem",
+    "build": "What I built",
+    "features": "Features",
+    "stack": "Stack"
+  },
   "footer": {
     "tagline": "Full-stack developer. I build web apps with Angular, Node and Express.",
     "nav": "Navigate",

@@ -28,6 +28,13 @@
     "email": "Email",
     "cv": "Scarica il CV"
   },
+  "detail": {
+    "back": "Torna ai progetti",
+    "problem": "Il problema",
+    "build": "Cosa ho costruito",
+    "features": "Funzionalità",
+    "stack": "Stack"
+  },
   "footer": {
     "tagline": "Full-stack developer. Costruisco web app con Angular, Node ed Express.",
     "nav": "Naviga",
