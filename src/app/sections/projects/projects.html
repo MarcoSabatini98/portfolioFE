@@ -1,0 +1,32 @@
+<section id="projects" class="projects">
+  <h2>{{ 'projects.title' | translate }}</h2>
+  <div class="grid">
+    @for (p of projects; track p.id) {
+      <article class="card" [class.featured]="p.featured" data-test="project-card">
+        <img class="shot" [src]="p.image" [alt]="p.name" loading="lazy" />
+        <h3>{{ p.name }}</h3>
+        <p class="summary">{{ p.summary }}</p>
+        <ul class="tech">
+          @for (t of p.tech; track t) { <li>{{ t }}</li> }
+        </ul>
+        <div class="links">
+          @if (p.repoBeUrl) {
+            <a [href]="p.repoBeUrl" target="_blank" rel="noopener" data-test="code-be">
+              {{ 'projects.code' | translate }} · BE
+            </a>
+          }
+          @if (p.repoFeUrl) {
+            <a [href]="p.repoFeUrl" target="_blank" rel="noopener" data-test="code-fe">
+              {{ 'projects.code' | translate }} · FE
+            </a>
+          }
+          @if (p.demoUrl) {
+            <a [href]="p.demoUrl" target="_blank" rel="noopener" class="primary" data-test="demo-link">
+              {{ 'projects.demo' | translate }}
+            </a>
+          }
+        </div>
+      </article>
+    }
+  </div>
+</section>
