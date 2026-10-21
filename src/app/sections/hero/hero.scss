@@ -1,7 +1,39 @@
-.hero { max-width: 1040px; margin: 0 auto; padding: 8rem 1.5rem 6rem; }
-.role { color: var(--accent); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; font-size: 0.85rem; margin: 0; }
-h1 { font-size: clamp(2.5rem, 6vw, 4rem); margin: 0.5rem 0; }
-.tagline { font-size: 1.25rem; color: var(--muted); max-width: 40ch; }
-.cta { display: flex; gap: 1rem; margin-top: 2rem; }
-.cta a { text-decoration: none; font-weight: 600; color: var(--accent); padding: 0.6rem 0; }
-.cta a.primary { padding: 0.6rem 1.2rem; background: var(--accent); color: #fff; border-radius: 8px; }
+.hero {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 8rem 1.5rem 6rem;
+}
+.role {
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  margin: 0;
+}
+h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin: 0.5rem 0;
+}
+.tagline {
+  font-size: 1.25rem;
+  color: var(--muted);
+  max-width: 40ch;
+}
+.cta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.cta a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--accent);
+  padding: 0.6rem 0;
+}
+.cta a.primary {
+  padding: 0.6rem 1.2rem;
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-radius: 8px;
+}

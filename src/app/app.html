@@ -6,11 +6,18 @@
     <a href="#contact">{{ 'nav.contact' | translate }}</a>
   </nav>
   <div class="controls">
-    <button type="button" (click)="lang.toggle()" [attr.aria-label]="'language'">
+    <button
+      type="button"
+      (click)="lang.toggle()"
+      [attr.aria-label]="lang.lang() === 'it' ? 'Switch to English' : 'Passa all\'italiano'"
+    >
       {{ lang.lang() === 'it' ? 'EN' : 'IT' }}
     </button>
-    <button type="button" (click)="theme.toggle()"
-            [attr.aria-label]="theme.theme() === 'dark' ? 'light mode' : 'dark mode'">
+    <button
+      type="button"
+      (click)="theme.toggle()"
+      [attr.aria-label]="theme.theme() === 'dark' ? 'light mode' : 'dark mode'"
+    >
       {{ theme.theme() === 'dark' ? '☀' : '☾' }}
     </button>
   </div>

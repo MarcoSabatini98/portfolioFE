@@ -1,6 +1,32 @@
-.contact { max-width: 720px; margin: 0 auto; padding: 6rem 1.5rem 8rem; text-align: center; }
-h2 { font-size: 2rem; margin-bottom: 1rem; }
-p { color: var(--muted); margin-bottom: 2rem; }
-.links { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; }
-.links a { color: var(--accent); text-decoration: none; font-weight: 600; padding: 0.6rem 0; }
-.links a.primary { padding: 0.6rem 1.2rem; background: var(--accent); color: #fff; border-radius: 8px; }
+.contact {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 6rem 1.5rem 8rem;
+  text-align: center;
+}
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+p {
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+.links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.links a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.6rem 0;
+}
+.links a.primary {
+  padding: 0.6rem 1.2rem;
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-radius: 8px;
+}

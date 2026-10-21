@@ -23,8 +23,8 @@ describe('ProjectsComponent', () => {
     f.detectChanges();
     const beLinks = f.nativeElement.querySelectorAll('[data-test="code-be"]');
     const feLinks = f.nativeElement.querySelectorAll('[data-test="code-fe"]');
-    expect(beLinks.length).toBeGreaterThanOrEqual(4);
-    expect(feLinks.length).toBeGreaterThanOrEqual(4);
+    expect(beLinks.length).toBe(4);
+    expect(feLinks.length).toBe(4);
   });
 
   it('renders demo link only for projects with demoUrl (exactly 1 — infopoint)', () => {

@@ -29,6 +29,15 @@ describe('LangService', () => {
     expect(s.lang()).toBe('en');
   });
 
+  it('ignores invalid stored lang value (e.g. fr) and falls back to browser', () => {
+    vi.stubGlobal('navigator', { language: 'it-IT' });
+    localStorage.setItem('lang', 'fr');
+    const s = TestBed.inject(LangService);
+    s.init();
+    expect(['it', 'en']).toContain(s.lang());
+    expect(s.lang()).not.toBe('fr');
+  });
+
   it('toggle flips language and persists', () => {
     vi.stubGlobal('navigator', { language: 'it-IT' });
     const t = TestBed.inject(TranslateService);

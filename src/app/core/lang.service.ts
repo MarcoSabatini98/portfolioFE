@@ -9,7 +9,8 @@ export class LangService {
   readonly lang = signal<Lang>('it');
 
   init(): void {
-    const stored = localStorage.getItem('lang') as Lang | null;
+    const raw = localStorage.getItem('lang');
+    const stored: Lang | null = raw === 'it' || raw === 'en' ? raw : null;
     const browser = navigator.language?.startsWith('en') ? 'en' : 'it';
     this.use(stored ?? browser);
   }
@@ -22,5 +23,6 @@ export class LangService {
     this.lang.set(lang);
     localStorage.setItem('lang', lang);
     this.translate.use(lang);
+    document.documentElement.lang = lang;
   }
 }
