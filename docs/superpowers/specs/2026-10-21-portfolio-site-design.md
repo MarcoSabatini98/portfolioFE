@@ -75,18 +75,71 @@ Single page, vertical scroll, anchored nav. No router.
    toggle, theme toggle, primary CTA (jump to projects) and secondary (contact).
 2. **About** — short narrative: the IFTS path, what Marco builds, what drives him.
    No filler.
-3. **Projects** — three cards, infopointSardinia featured largest:
-   - infopointSardinia (primary) — full-stack Angular 21 + Express/Sequelize
-   - celesterosa
-   - sudoku
-   Each card: screenshot or GIF, 1–2 line problem→build summary, tech tags,
-   a "Code" button and a "Live demo" button. **The "Live demo" button renders
-   only when a demo URL exists** — this handles the current mixed/unfinished
-   deploy state gracefully, and demos can be linked in later without code change.
+3. **Projects** — four cards, ordered by weight. Only infopointSardinia is
+   deployed today; the rest are repo-only until their frontends/deploys are
+   finished. Each card: screenshot or GIF, 1–2 line problem→build summary, tech
+   tags, a "Code" button and a "Live demo" button. **Both buttons render only
+   when their URL exists** — this handles the mixed/unfinished deploy state
+   gracefully, and links can be added later without a code change. A card with
+   neither URL (e.g. a private/proprietary repo) shows its description alone,
+   optionally with a "code on request" note.
+
+   1. **progetto — Booking & Property Management platform** *(flagship, repo-only;
+      repo is proprietary and may be private → possibly no public "Code" link).*
+      White-label full-stack platform for hotels/B&Bs: real-time booking engine
+      with availability holds, Stripe/PayPal payments, front desk, housekeeping
+      board, live chat (Socket.IO), analytics (ADR/RevPAR), loyalty tiers. Italian
+      compliance: Alloggiati Web, FatturaPA e-invoicing, city tax. OTA iCal sync
+      (Booking/Airbnb/Expedia), content in five languages. 263 tests, OWASP Top 10
+      hardening.
+      `Node.js 22 · Express 5 · Sequelize · MariaDB · Socket.IO · Stripe · PayPal · JWT · Jest`
+   2. **infopointSardinia** *(the one with a real live demo — FE on Vercel, BE on
+      Render).* Portal to discover and browse events of all kinds currently active
+      in Sardinia: search/filters, authentication, admin area. Angular 21 frontend
+      + Express/Sequelize backend. ~1017 tests, CI/CD pipeline.
+      `Angular 21 · TypeScript · Express · Sequelize · MySQL · Vitest · CI/CD`
+   3. **celesterosa** *(repo-only; Angular frontend still scaffold).* Musical-
+      instrument e-commerce. Express 5 + Sequelize/MariaDB REST API: hierarchical
+      category catalog (EAV model), product variants, Stripe payments (webhooks),
+      PDF invoicing with Italian VAT, automated emails, S3-compatible image storage
+      (MinIO), Swagger docs.
+      `Angular 21 · Express 5 · Sequelize · MariaDB · Stripe · Swagger · JWT`
+   4. **Multi-game Platform** *(repo-only; formerly "sudoku", renamed — it's three
+      games. Angular frontend still scaffold).* Multi-game REST API: Sudoku puzzle
+      generator (4 difficulties), Machiavelli card game (1 human vs 3 bots) and a
+      crossword generated from the Italian dictionary. Saved games and per-difficulty
+      records, JSend responses, Helmet + rate-limiting, Jest + supertest.
+      `Node.js · Express 5 · Sequelize · MariaDB · Joi · Jest`
 4. **Skills** — grouped (Frontend / Backend / Tooling), presented as real
    competencies, not a flat laundry list. Reinforced by the project tech tags.
 5. **Contact** — email (mailto), LinkedIn, GitHub, and a "Scarica CV / Download CV"
    button (IT and EN PDF) that fires the GoatCounter `cv_download` event.
+
+## Content drafts
+
+### About (draft — Marco to correct)
+
+**IT:**
+> Sviluppatore full-stack junior con una formazione IFTS e un metodo preso sul
+> serio: TypeScript ovunque, test prima del merge, CI/CD e lint come abitudine,
+> non come decorazione. Mi piace il lavoro che non si vede — l'architettura a
+> layer, i vincoli di integrità nel database, l'hardening di sicurezza — perché è
+> lì che un progetto regge nel tempo. Costruisco con Angular, Node/Express e
+> Sequelize, dal motore di prenotazione di un gestionale alberghiero a un portale
+> eventi in produzione. Cerco un team dove continuare a imparare e spedire codice
+> di cui fidarsi.
+
+**EN:**
+> Junior full-stack developer with an IFTS background and a method I take
+> seriously: TypeScript everywhere, tests before merge, CI/CD and linting as a
+> habit rather than decoration. I like the work you don't see — layered
+> architecture, database-level integrity constraints, security hardening —
+> because that's where a project holds up over time. I build with Angular,
+> Node/Express and Sequelize, from a hotel management platform's booking engine
+> to a live events portal. I'm looking for a team where I can keep learning and
+> ship code worth trusting.
+
+*(Both strings live in the ngx-translate i18n files, keyed e.g. `about.body`.)*
 
 ## Data & content model
 
@@ -100,7 +153,7 @@ interface Project {
   name: string;
   summaryKey: string;      // i18n key, resolves per language
   tech: string[];          // tech tags
-  repoUrl: string;
+  repoUrl?: string;        // optional → controls "Code" button (private repo → absent)
   demoUrl?: string;        // optional → controls "Live demo" button
   image: string;           // screenshot/GIF asset path
 }
