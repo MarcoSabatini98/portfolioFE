@@ -7,7 +7,8 @@ export class ThemeService {
   readonly theme = signal<Theme>('light');
 
   init(): void {
-    const stored = localStorage.getItem('theme') as Theme | null;
+    const raw = localStorage.getItem('theme');
+    const stored: Theme | null = raw === 'light' || raw === 'dark' ? raw : null;
     const prefersDark = window.matchMedia?.('(prefers-color-scheme: dark)').matches;
     this.apply(stored ?? (prefersDark ? 'dark' : 'light'));
   }

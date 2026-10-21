@@ -29,5 +29,15 @@ describe('ThemeService', () => {
     const s = TestBed.inject(ThemeService);
     s.init();
     expect(s.theme()).toBe('dark');
+    expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
+  });
+
+  it('ignores invalid stored theme and defaults to system preference', () => {
+    localStorage.setItem('theme', 'bogus');
+    const s = TestBed.inject(ThemeService);
+    s.init();
+    const theme = s.theme();
+    expect(['light', 'dark']).toContain(theme);
+    expect(localStorage.getItem('theme')).toBe(theme);
   });
 });
