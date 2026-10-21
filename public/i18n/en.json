@@ -10,7 +10,12 @@
     "title": "About",
     "body": "Junior full-stack developer with an IFTS background and a method I take seriously: TypeScript everywhere, tests before merge, CI/CD and linting as a habit. I like the work you don't see — layered architecture, database-level integrity constraints, security hardening — because that's where a project holds up over time. I build with Angular, Node/Express and Sequelize. I'm looking for a team where I can keep learning and ship code worth trusting."
   },
-  "projects": { "title": "Projects", "code": "Code", "demo": "Live demo" },
+  "projects": {
+    "title": "Projects",
+    "intro": "A selection of my full-stack projects.",
+    "code": "Code",
+    "demo": "Live demo"
+  },
   "skills": {
     "title": "Skills",
     "frontend": "Frontend",
