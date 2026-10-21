@@ -11,13 +11,26 @@ describe('LangService', () => {
     });
   });
 
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
   it('defaults to it when nothing stored', () => {
+    vi.stubGlobal('navigator', { language: 'it-IT' });
     const s = TestBed.inject(LangService);
     s.init();
     expect(s.lang()).toBe('it');
   });
 
+  it('uses browser language en when nothing stored', () => {
+    vi.stubGlobal('navigator', { language: 'en-US' });
+    const s = TestBed.inject(LangService);
+    s.init();
+    expect(s.lang()).toBe('en');
+  });
+
   it('toggle flips language and persists', () => {
+    vi.stubGlobal('navigator', { language: 'it-IT' });
     const t = TestBed.inject(TranslateService);
     const s = TestBed.inject(LangService);
     s.init();

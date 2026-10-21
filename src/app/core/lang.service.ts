@@ -10,7 +10,8 @@ export class LangService {
 
   init(): void {
     const stored = localStorage.getItem('lang') as Lang | null;
-    this.use(stored ?? 'it');
+    const browser = navigator.language?.startsWith('en') ? 'en' : 'it';
+    this.use(stored ?? browser);
   }
 
   toggle(): void {
