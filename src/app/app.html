@@ -1,9 +1,27 @@
 <header class="nav">
-  <a href="#hero" class="brand">M</a>
+  <a routerLink="/" class="brand">M</a>
   <nav>
-    <a href="#projects">{{ 'nav.projects' | translate }}</a>
-    <a href="#about">{{ 'nav.about' | translate }}</a>
-    <a href="#contact">{{ 'nav.contact' | translate }}</a>
+    <a
+      routerLink="/progetti"
+      routerLinkActive="active"
+      #rlaProgetti="routerLinkActive"
+      [attr.aria-current]="rlaProgetti.isActive ? 'page' : null"
+      >{{ 'nav.projects' | translate }}</a
+    >
+    <a
+      routerLink="/chi-sono"
+      routerLinkActive="active"
+      #rlaChi="routerLinkActive"
+      [attr.aria-current]="rlaChi.isActive ? 'page' : null"
+      >{{ 'nav.about' | translate }}</a
+    >
+    <a
+      routerLink="/contatti"
+      routerLinkActive="active"
+      #rlaContatti="routerLinkActive"
+      [attr.aria-current]="rlaContatti.isActive ? 'page' : null"
+      >{{ 'nav.contact' | translate }}</a
+    >
   </nav>
   <div class="controls">
     <button
@@ -24,11 +42,7 @@
 </header>
 
 <main>
-  <app-hero />
-  <app-projects />
-  <app-about />
-  <app-skills />
-  <app-contact />
+  <router-outlet />
 </main>
 
 <footer class="foot">© {{ year }} Marco Sabatini</footer>

@@ -39,6 +39,11 @@ nav a {
 nav a:hover {
   color: var(--fg);
 }
+nav a.active {
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 2px;
+}
 .controls {
   display: flex;
   gap: 0.5rem;

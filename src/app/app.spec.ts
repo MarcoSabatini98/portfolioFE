@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
 import { provideTranslateService } from '@ngx-translate/core';
 import { App } from './app';
 
@@ -7,7 +8,11 @@ describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
-      providers: [provideHttpClient(), provideTranslateService({ fallbackLang: 'it', lang: 'it' })],
+      providers: [
+        provideRouter([]),
+        provideHttpClient(),
+        provideTranslateService({ fallbackLang: 'it', lang: 'it' }),
+      ],
     }).compileComponents();
   });
 
@@ -21,6 +26,14 @@ describe('App', () => {
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.brand')?.textContent?.trim()).toBe('M');
+  });
+
+  it('should render a nav link to /progetti', async () => {
+    const fixture = TestBed.createComponent(App);
+    await fixture.whenStable();
+    const compiled = fixture.nativeElement as HTMLElement;
+    const link = compiled.querySelector('nav a[href="/progetti"]');
+    expect(link).toBeTruthy();
   });
 
   it('should render the footer with copyright', async () => {
