@@ -1,15 +1,14 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
+import { AboutComponent } from '../../sections/about/about';
+import { SkillsComponent } from '../../sections/skills/skills';
+import { RevealDirective } from '../../core/reveal.directive';
 
 @Component({
   selector: 'app-about-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `<section class="wrap"><h1>Chi sono</h1></section>`,
-  styles: [
-    `
-      .wrap {
-        padding: 4rem max(1.5rem, calc((100% - 1040px) / 2));
-      }
-    `,
-  ],
+  imports: [TranslatePipe, AboutComponent, SkillsComponent, RevealDirective],
+  templateUrl: './about-page.html',
+  styleUrl: './about-page.scss',
 })
 export class AboutPageComponent {}

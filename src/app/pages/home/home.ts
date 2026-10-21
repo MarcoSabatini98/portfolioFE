@@ -1,21 +1,23 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 import { HeroComponent } from '../../sections/hero/hero';
 import { ProjectsComponent } from '../../sections/projects/projects';
-import { AboutComponent } from '../../sections/about/about';
 import { SkillsComponent } from '../../sections/skills/skills';
-import { ContactComponent } from '../../sections/contact/contact';
+import { RevealDirective } from '../../core/reveal.directive';
 
-// ponytail: composes existing sections directly; Task 7 will restructure into a true home page
 @Component({
   selector: 'app-home',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [HeroComponent, ProjectsComponent, AboutComponent, SkillsComponent, ContactComponent],
-  template: `
-    <app-hero />
-    <app-projects />
-    <app-about />
-    <app-skills />
-    <app-contact />
-  `,
+  imports: [
+    HeroComponent,
+    ProjectsComponent,
+    SkillsComponent,
+    RouterLink,
+    TranslatePipe,
+    RevealDirective,
+  ],
+  templateUrl: './home.html',
+  styleUrl: './home.scss',
 })
 export class HomeComponent {}

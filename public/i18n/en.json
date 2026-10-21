@@ -6,7 +6,15 @@
     "cta_projects": "See projects",
     "cta_contact": "Get in touch"
   },
+  "home": {
+    "aboutTeaser": "Full-stack developer with an IFTS background and a rigorous method: TypeScript everywhere, tests before merge, CI/CD and linting as a habit. I build with Angular, Node/Express and Sequelize.",
+    "aboutMore": "Learn more",
+    "allProjects": "View all projects →",
+    "contactCta": "Want to collaborate or share an opportunity?",
+    "contactBtn": "Get in touch"
+  },
   "about": {
+    "pageTitle": "About",
     "title": "About",
     "body": "Junior full-stack developer with an IFTS background and a method I take seriously: TypeScript everywhere, tests before merge, CI/CD and linting as a habit. I like the work you don't see — layered architecture, database-level integrity constraints, security hardening — because that's where a project holds up over time. I build with Angular, Node/Express and Sequelize. I'm looking for a team where I can keep learning and ship code worth trusting."
   },
@@ -23,6 +31,7 @@
     "tooling": "Tooling & Quality"
   },
   "contact": {
+    "pageTitle": "Contact",
     "title": "Contact",
     "body": "Open to full-stack opportunities, remote-friendly.",
     "email": "Email",
