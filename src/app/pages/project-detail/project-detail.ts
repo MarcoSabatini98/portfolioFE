@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
+import { LangService } from '../../core/lang.service';
 import { RevealDirective } from '../../core/reveal.directive';
-import { PROJECTS, Project } from '../../data/projects';
+import { PROJECTS, Project, localize } from '../../data/projects';
 import { ShotsComponent } from '../../shared/shots/shots';
 
 @Component({
@@ -13,7 +14,9 @@ import { ShotsComponent } from '../../shared/shots/shots';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectDetailComponent {
-  project: Project | undefined;
+  private readonly found?: Project;
+  private readonly lang = inject(LangService).lang;
+  readonly project = computed(() => this.found && localize(this.found, this.lang()));
 
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
@@ -25,10 +28,10 @@ export class ProjectDetailComponent {
       this.router.navigate(['/progetti'], { replaceUrl: true });
       return;
     }
-    this.project = found;
+    this.found = found;
   }
 
   get hasLinks(): boolean {
-    return !!(this.project?.repoBeUrl || this.project?.repoFeUrl || this.project?.demoUrl);
+    return !!(this.found?.repoBeUrl || this.found?.repoFeUrl || this.found?.demoUrl);
   }
 }

@@ -28,8 +28,8 @@ describe('ProjectsListComponent', () => {
     const f = TestBed.createComponent(ProjectsListComponent);
     f.detectChanges();
     // routerLink is ['/progetti', p.id] — verify the data that drives it
-    expect(f.componentInstance.projects.length).toBe(4);
-    f.componentInstance.projects.forEach((p) => expect(p.id).toBeTruthy());
+    expect(f.componentInstance.projects().length).toBe(4);
+    f.componentInstance.projects().forEach((p) => expect(p.id).toBeTruthy());
   });
 
   it('card title link points to /progetti/<id>', () => {
@@ -38,7 +38,7 @@ describe('ProjectsListComponent', () => {
     const links = f.nativeElement.querySelectorAll('[data-test="project-card"] a.card-link');
     expect(links.length).toBe(4);
     links.forEach((a: HTMLAnchorElement, i: number) =>
-      expect(a.getAttribute('href')).toBe('/progetti/' + f.componentInstance.projects[i].id),
+      expect(a.getAttribute('href')).toBe('/progetti/' + f.componentInstance.projects()[i].id),
     );
   });
 

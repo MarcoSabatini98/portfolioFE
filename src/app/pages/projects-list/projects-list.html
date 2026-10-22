@@ -4,7 +4,7 @@
     <p class="intro">{{ 'projects.intro' | translate }}</p>
   </div>
   <div class="grid">
-    @for (p of projects; track p.id; let i = $index) {
+    @for (p of projects(); track p.id; let i = $index) {
       @let row = p.featured || p.id === wideId;
       <article
         class="card"

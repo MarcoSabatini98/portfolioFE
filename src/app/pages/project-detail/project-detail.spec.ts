@@ -31,7 +31,7 @@ describe('ProjectDetailComponent', () => {
     it('resolves the project from the route id', () => {
       const f = TestBed.createComponent(ProjectDetailComponent);
       f.detectChanges();
-      expect(f.componentInstance.project?.id).toBe('progetto');
+      expect(f.componentInstance.project()?.id).toBe('progetto');
     });
 
     it('renders the project name in the DOM', () => {
@@ -92,7 +92,7 @@ describe('ProjectDetailComponent', () => {
 
     it('project field is undefined for unknown id', () => {
       const f = TestBed.createComponent(ProjectDetailComponent);
-      expect(f.componentInstance.project).toBeUndefined();
+      expect(f.componentInstance.project()).toBeUndefined();
     });
   });
 });
