@@ -1,0 +1,90 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "role": "Full-Stack Developer",
+    "tagline": "Full-stack developer specialized in modern Angular: Signals, standalone components, Typed Forms and NgRx. Node and Express on the server, with RxJS and Socket.io for real-time.",
+    "cta_projects": "See projects",
+    "cta_contact": "Get in touch",
+    "headline": "I build reactive,",
+    "headlineAccent": "real-time web apps."
+  },
+  "home": {
+    "aboutTeaser": "I write clean, maintainable code: Dependency Injection, GitFlow, Docker and CI/CD are how I work, Agile sprints on Jira included. I speak C2-level English, so documentation, international teams and remote work come naturally.",
+    "aboutMore": "Learn more",
+    "allProjects": "View all projects →",
+    "contactCta": "Want to collaborate or share an opportunity?",
+    "contactBtn": "Get in touch"
+  },
+  "about": {
+    "pageTitle": "About",
+    "title": "About",
+    "body": "Junior full-stack developer with an IFTS background and a method I take seriously: TypeScript everywhere, tests before merge, CI/CD and linting as a habit. I like the work you don't see — layered architecture, database-level integrity constraints, security hardening — because that's where a project holds up over time. I build with Angular, Node/Express and Sequelize. I'm looking for a team where I can keep learning and ship code worth trusting.",
+    "path": "I don't come from a classic IT path. I'm a qualified electrical technician, and before software I worked as an electrician, in warehouses and in deliveries: hands-on jobs where things have to work. I bring the same approach to code.",
+    "photoAlt": "Photo of Marco Sabatini"
+  },
+  "projects": {
+    "title": "Projects",
+    "intro": "A selection of my full-stack projects.",
+    "code": "Code",
+    "demo": "Live demo"
+  },
+  "skills": {
+    "title": "Skills",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "tooling": "Tooling & Quality"
+  },
+  "contact": {
+    "pageTitle": "Contact",
+    "title": "Let's talk",
+    "body": "Open to full-stack opportunities, remote included",
+    "email": "Email",
+    "cv": "Download CV",
+    "lead": "Got an opportunity, a project or just a question? Write to me: I read every message carefully and I'm happy to reply.",
+    "emailDesc": "The most direct way to reach me.",
+    "linkedinDesc": "Experience, education and updates.",
+    "githubDesc": "The code behind my projects, frontend to backend.",
+    "cvTitle": "Prefer everything in one document?",
+    "cvBody": "Download my CV with skills, projects and education."
+  },
+  "detail": {
+    "back": "Back to projects",
+    "problem": "The problem",
+    "build": "What I built",
+    "features": "Features",
+    "stack": "Stack"
+  },
+  "footer": {
+    "tagline": "Full-stack developer. I build web apps with Angular, Node and Express.",
+    "nav": "Navigate",
+    "contact": "Contact",
+    "built": "Built with ❤️ and Angular 21",
+    "top": "↑ Back to top"
+  },
+  "badge": {
+    "flagship": "FLAGSHIP",
+    "production": "IN PRODUCTION",
+    "side": "SIDE PROJECT"
+  },
+  "notFound": {
+    "message": "Page not found.",
+    "home": "Back to home"
+  },
+  "a11y": {
+    "home": "Home",
+    "footerNav": "Footer navigation",
+    "backToTop": "Back to top",
+    "mainNav": "Main navigation",
+    "mobileNav": "Mobile navigation",
+    "switchLang": "Switch to Italian",
+    "lightMode": "Switch to light theme",
+    "darkMode": "Switch to dark theme",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  }
+}

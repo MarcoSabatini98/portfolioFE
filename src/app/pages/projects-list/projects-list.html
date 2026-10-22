@@ -1,0 +1,65 @@
+<section class="projects-page">
+  <div class="page-head" appReveal>
+    <h1>{{ 'projects.title' | translate }}</h1>
+    <p class="intro">{{ 'projects.intro' | translate }}</p>
+  </div>
+  <div class="grid">
+    @for (p of projects; track p.id; let i = $index) {
+      @let row = p.featured || p.id === wideId;
+      <article
+        class="card"
+        [class.feat]="p.featured"
+        [class.row]="row"
+        data-test="project-card"
+        appReveal
+        [appRevealDelay]="i * 80"
+      >
+        <div class="shot-wrap" [class.row-shot]="row">
+          <app-shots class="shot" [shots]="p.shots" [alt]="p.name" />
+        </div>
+        <div class="body" [class.row-body]="row">
+          <span class="badge">{{
+            (p.featured
+              ? 'badge.flagship'
+              : p.id === 'infopoint'
+                ? 'badge.production'
+                : 'badge.side'
+            ) | translate
+          }}</span>
+          <h2>
+            <a [routerLink]="['/progetti', p.id]" class="card-link">{{ p.name }}</a>
+          </h2>
+          <p class="tagline">{{ p.tagline }}</p>
+          <div class="stack">
+            @for (t of p.tech; track t) {
+              <span>{{ t }}</span>
+            }
+          </div>
+          <div class="links">
+            @if (p.repoBeUrl) {
+              <a [href]="p.repoBeUrl" target="_blank" rel="noopener" data-test="code-be">
+                {{ 'projects.code' | translate }} · BE
+              </a>
+            }
+            @if (p.repoFeUrl) {
+              <a [href]="p.repoFeUrl" target="_blank" rel="noopener" data-test="code-fe">
+                {{ 'projects.code' | translate }} · FE
+              </a>
+            }
+            @if (p.demoUrl) {
+              <a
+                [href]="p.demoUrl"
+                target="_blank"
+                rel="noopener"
+                class="primary"
+                data-test="demo-link"
+              >
+                {{ 'projects.demo' | translate }} →
+              </a>
+            }
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+</section>

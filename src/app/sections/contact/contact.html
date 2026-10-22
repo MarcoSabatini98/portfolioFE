@@ -1,0 +1,47 @@
+<section id="contact" class="contact">
+  <div class="sec-head">
+    <span>{{ 'nav.contact' | translate }}</span>
+    <h2>{{ 'contact.title' | translate }}</h2>
+    <p class="lead">{{ 'contact.lead' | translate }}</p>
+    <p class="status">
+      <span class="dot" aria-hidden="true"></span>{{ 'contact.body' | translate }}
+    </p>
+  </div>
+
+  <ul class="cards">
+    <li>
+      <a class="card" [href]="'mailto:' + email">
+        <span class="icon"><app-icon name="mail" [size]="22" /></span>
+        <span class="label">{{ 'contact.email' | translate }}</span>
+        <span class="value">{{ email }}</span>
+        <span class="desc">{{ 'contact.emailDesc' | translate }}</span>
+      </a>
+    </li>
+    <li>
+      <a class="card" [href]="linkedin" target="_blank" rel="noopener">
+        <span class="icon"><app-icon name="linkedin" [size]="22" /></span>
+        <span class="label">LinkedIn</span>
+        <span class="value">marco-sabatini-dev</span>
+        <span class="desc">{{ 'contact.linkedinDesc' | translate }}</span>
+      </a>
+    </li>
+    <li>
+      <a class="card" [href]="github" target="_blank" rel="noopener">
+        <span class="icon"><app-icon name="github" [size]="22" /></span>
+        <span class="label">GitHub</span>
+        <span class="value">MarcoSabatini98</span>
+        <span class="desc">{{ 'contact.githubDesc' | translate }}</span>
+      </a>
+    </li>
+  </ul>
+
+  <div class="cv">
+    <div>
+      <h3>{{ 'contact.cvTitle' | translate }}</h3>
+      <p>{{ 'contact.cvBody' | translate }}</p>
+    </div>
+    <a [href]="cvHref" download (click)="onCvDownload()" class="cv-btn">
+      <app-icon name="download" [size]="18" />{{ 'contact.cv' | translate }}
+    </a>
+  </div>
+</section>

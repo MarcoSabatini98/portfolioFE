@@ -1,0 +1,12 @@
+/* ponytail: page-title h1 removed (duplicate); section h2 is the primary heading */
+.page-wrap {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 0 2rem;
+}
+
+@media (max-width: 640px) {
+  .page-wrap {
+    padding: 0 0 1.5rem;
+  }
+}

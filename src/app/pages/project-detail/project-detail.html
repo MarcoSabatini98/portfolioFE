@@ -1,0 +1,80 @@
+@if (project) {
+  <div class="detail-page">
+    <div class="content-col">
+      <a routerLink="/progetti" class="back-link" appReveal> ← {{ 'detail.back' | translate }} </a>
+
+      <header class="detail-header" appReveal [appRevealDelay]="60">
+        <h1>{{ project.name }}</h1>
+        <p class="tagline">{{ project.tagline }}</p>
+        @if (project.role || project.year) {
+          <div class="meta-row">
+            @if (project.role) {
+              <span class="meta-chip">{{ project.role }}</span>
+            }
+            @if (project.year) {
+              <span class="meta-chip">{{ project.year }}</span>
+            }
+          </div>
+        }
+      </header>
+
+      <div class="hero-img-wrap" appReveal [appRevealDelay]="120">
+        <app-shots class="hero-img" [shots]="project.shots" [alt]="project.name" loading="eager" />
+      </div>
+
+      <section class="detail-section" appReveal [appRevealDelay]="160">
+        <h2>{{ 'detail.problem' | translate }}</h2>
+        <p class="body-text">{{ project.problem }}</p>
+      </section>
+
+      <section class="detail-section" appReveal [appRevealDelay]="200">
+        <h2>{{ 'detail.build' | translate }}</h2>
+        <p class="body-text">{{ project.build }}</p>
+      </section>
+
+      <section class="detail-section" appReveal [appRevealDelay]="240">
+        <h2>{{ 'detail.features' | translate }}</h2>
+        <ul class="features-grid">
+          @for (f of project.features; track f) {
+            <li class="feature-item">{{ f }}</li>
+          }
+        </ul>
+      </section>
+
+      <section class="detail-section" appReveal [appRevealDelay]="280">
+        <h2>{{ 'detail.stack' | translate }}</h2>
+        <div class="stack">
+          @for (t of project.tech; track t) {
+            <span>{{ t }}</span>
+          }
+        </div>
+      </section>
+
+      @if (hasLinks) {
+        <div class="links" appReveal [appRevealDelay]="320">
+          @if (project.repoBeUrl) {
+            <a [href]="project.repoBeUrl" target="_blank" rel="noopener" data-test="code-be">
+              {{ 'projects.code' | translate }} · BE
+            </a>
+          }
+          @if (project.repoFeUrl) {
+            <a [href]="project.repoFeUrl" target="_blank" rel="noopener" data-test="code-fe">
+              {{ 'projects.code' | translate }} · FE
+            </a>
+          }
+          @if (project.demoUrl) {
+            <a
+              [href]="project.demoUrl"
+              target="_blank"
+              rel="noopener"
+              class="primary"
+              data-test="demo-link"
+            >
+              {{ 'projects.demo' | translate }} →
+            </a>
+          }
+        </div>
+      }
+    </div>
+  </div>
+}

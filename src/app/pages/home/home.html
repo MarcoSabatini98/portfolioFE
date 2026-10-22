@@ -1,0 +1,22 @@
+<app-hero />
+
+<section class="about-teaser" appReveal [appRevealDelay]="0">
+  <p class="teaser-text">{{ 'home.aboutTeaser' | translate }}</p>
+  <a routerLink="/chi-sono" class="teaser-link">{{ 'home.aboutMore' | translate }}</a>
+</section>
+
+<div appReveal [appRevealDelay]="100">
+  <app-skills />
+</div>
+
+<div appReveal [appRevealDelay]="200">
+  <app-projects [limit]="3" />
+  <div class="all-projects-wrap">
+    <a routerLink="/progetti" class="all-projects-link">{{ 'home.allProjects' | translate }}</a>
+  </div>
+</div>
+
+<section class="contact-cta" appReveal [appRevealDelay]="300">
+  <p>{{ 'home.contactCta' | translate }}</p>
+  <a routerLink="/contatti" class="btn-cta">{{ 'home.contactBtn' | translate }}</a>
+</section>

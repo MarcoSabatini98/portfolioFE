@@ -1,0 +1,72 @@
+<footer class="footer" id="top">
+  <div class="footer-inner">
+    <!-- Brand block -->
+    <div class="footer-brand">
+      <a routerLink="/" class="brand-tile" [attr.aria-label]="'a11y.home' | translate">MS</a>
+      <span class="brand-name">Marco Sabatini</span>
+      <p class="brand-tagline">{{ 'footer.tagline' | translate }}</p>
+    </div>
+
+    <!-- Nav column -->
+    <div class="footer-col">
+      <h3 class="col-heading">{{ 'footer.nav' | translate }}</h3>
+      <nav [attr.aria-label]="'a11y.footerNav' | translate">
+        <a
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          ariaCurrentWhenActive="page"
+          >{{ 'nav.home' | translate }}</a
+        >
+        <a routerLink="/progetti" routerLinkActive="active" ariaCurrentWhenActive="page">{{
+          'nav.projects' | translate
+        }}</a>
+        <a routerLink="/chi-sono" routerLinkActive="active" ariaCurrentWhenActive="page">{{
+          'nav.about' | translate
+        }}</a>
+        <a routerLink="/contatti" routerLinkActive="active" ariaCurrentWhenActive="page">{{
+          'nav.contact' | translate
+        }}</a>
+      </nav>
+    </div>
+
+    <!-- Contact column -->
+    <div class="footer-col">
+      <h3 class="col-heading">{{ 'footer.contact' | translate }}</h3>
+      <ul class="brand-links">
+        <li>
+          <a [href]="'mailto:' + email"><app-icon name="mail" [size]="18" />{{ email }}</a>
+        </li>
+        <li>
+          <a [href]="linkedin" target="_blank" rel="noopener"
+            ><app-icon name="linkedin" [size]="18" />linkedin.com/in/marco-sabatini-dev</a
+          >
+        </li>
+        <li>
+          <a [href]="github" target="_blank" rel="noopener"
+            ><app-icon name="github" [size]="18" />github.com/MarcoSabatini98</a
+          >
+        </li>
+        <li>
+          <a [href]="cvHref" download (click)="onCvDownload()"
+            ><app-icon name="download" [size]="18" />{{ 'contact.cv' | translate }}</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    <span class="copy">© {{ year }} Marco Sabatini</span>
+    <span class="built">{{ 'footer.built' | translate }}</span>
+    <button
+      type="button"
+      class="back-top"
+      (click)="scrollTop()"
+      [attr.aria-label]="'a11y.backToTop' | translate"
+    >
+      {{ 'footer.top' | translate }}
+    </button>
+  </div>
+</footer>
