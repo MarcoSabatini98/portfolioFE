@@ -31,7 +31,7 @@ describe('ProjectDetailComponent', () => {
     it('resolves the project from the route id', () => {
       const f = TestBed.createComponent(ProjectDetailComponent);
       f.detectChanges();
-      expect(f.componentInstance.project?.id).toBe('progetto');
+      expect(f.componentInstance.project()?.id).toBe('progetto');
     });
 
     it('renders the project name in the DOM', () => {
@@ -46,6 +46,26 @@ describe('ProjectDetailComponent', () => {
       f.detectChanges();
       const items = f.nativeElement.querySelectorAll('.feature-item');
       expect(items.length).toBeGreaterThan(0);
+    });
+
+    it('renders one gallery figure per screenshot', () => {
+      const f = TestBed.createComponent(ProjectDetailComponent);
+      f.detectChanges();
+      const shots = f.nativeElement.querySelectorAll('.shot');
+      expect(shots.length).toBe(8);
+      expect(shots[0].querySelector('img').getAttribute('loading')).toBe('lazy');
+    });
+
+    it('renders font specimens and palette, loading the fonts only while open', () => {
+      const f = TestBed.createComponent(ProjectDetailComponent);
+      f.detectChanges();
+      const el: HTMLElement = f.nativeElement;
+      expect(el.querySelectorAll('.font-card').length).toBe(4);
+      expect(el.querySelectorAll('.swatch').length).toBe(7);
+      const sel = 'link[href*="fonts.googleapis.com/css2?family=Young+Serif"]';
+      expect(document.head.querySelector(sel)).toBeTruthy();
+      f.destroy();
+      expect(document.head.querySelector(sel)).toBeNull();
     });
 
     it('renders code-be and code-fe links with rel="noopener"', () => {
@@ -84,7 +104,7 @@ describe('ProjectDetailComponent', () => {
 
     it('project field is undefined for unknown id', () => {
       const f = TestBed.createComponent(ProjectDetailComponent);
-      expect(f.componentInstance.project).toBeUndefined();
+      expect(f.componentInstance.project()).toBeUndefined();
     });
   });
 });

@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
+import { LangService } from '../../core/lang.service';
 import { RevealDirective } from '../../core/reveal.directive';
-import { PROJECTS } from '../../data/projects';
+import { PROJECTS, localize } from '../../data/projects';
 import { ShotsComponent } from '../../shared/shots/shots';
 
 @Component({
@@ -13,7 +14,8 @@ import { ShotsComponent } from '../../shared/shots/shots';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectsListComponent {
-  readonly projects = PROJECTS;
+  private readonly lang = inject(LangService).lang;
+  readonly projects = computed(() => PROJECTS.map((p) => localize(p, this.lang())));
 
   // Regular cards sit in pairs; with an odd count the last one goes horizontal so it never sits alone.
   private readonly regular = PROJECTS.filter((p) => !p.featured);

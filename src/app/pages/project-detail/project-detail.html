@@ -1,4 +1,4 @@
-@if (project) {
+@if (project(); as project) {
   <div class="detail-page">
     <div class="content-col">
       <a routerLink="/progetti" class="back-link" appReveal> ← {{ 'detail.back' | translate }} </a>
@@ -31,6 +31,66 @@
         <h2>{{ 'detail.build' | translate }}</h2>
         <p class="body-text">{{ project.build }}</p>
       </section>
+
+      @if (project.gallery?.length) {
+        <section class="detail-section" appReveal [appRevealDelay]="220">
+          <h2>{{ 'detail.gallery' | translate }}</h2>
+          <div class="gallery">
+            @for (shot of project.gallery; track shot.src) {
+              <figure class="shot">
+                <a [href]="shot.src" target="_blank" rel="noopener">
+                  <img
+                    [src]="shot.src"
+                    [alt]="project.name + ' — ' + shot.title"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+                <figcaption>
+                  <strong>{{ shot.title }}</strong>
+                  {{ shot.text }}
+                </figcaption>
+              </figure>
+            }
+          </div>
+        </section>
+      }
+
+      @if (project.design; as design) {
+        <section class="detail-section" appReveal [appRevealDelay]="230">
+          <h2>{{ 'detail.design' | translate }}</h2>
+          <p class="body-text">{{ design.note }}</p>
+
+          <h3 class="sub-title">{{ 'detail.fonts' | translate }}</h3>
+          <ul class="fonts">
+            @for (f of design.fonts; track f.family) {
+              <li class="font-card">
+                <span
+                  class="font-sample"
+                  [style.font-family]="fontStack(f.family)"
+                  aria-hidden="true"
+                  >Aa</span
+                >
+                <span class="font-name" [style.font-family]="fontStack(f.family)">{{
+                  f.family
+                }}</span>
+                <span class="font-role">{{ f.role }}</span>
+              </li>
+            }
+          </ul>
+
+          <h3 class="sub-title">{{ 'detail.palette' | translate }}</h3>
+          <ul class="palette">
+            @for (c of design.colors; track c.hex) {
+              <li class="swatch">
+                <span class="swatch-chip" [style.background]="c.hex"></span>
+                <span class="swatch-name">{{ c.name }}</span>
+                <code class="swatch-hex">{{ c.hex }}</code>
+              </li>
+            }
+          </ul>
+        </section>
+      }
 
       <section class="detail-section" appReveal [appRevealDelay]="240">
         <h2>{{ 'detail.features' | translate }}</h2>
