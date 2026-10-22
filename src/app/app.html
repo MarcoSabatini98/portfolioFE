@@ -2,7 +2,7 @@
   <a routerLink="/" class="brand">M</a>
 
   <!-- Desktop nav -->
-  <nav class="nav-desktop" aria-label="Main navigation">
+  <nav class="nav-desktop" [attr.aria-label]="'a11y.mainNav' | translate">
     <a
       routerLink="/progetti"
       routerLinkActive="active"
@@ -27,17 +27,15 @@
   </nav>
 
   <div class="controls">
-    <button
-      type="button"
-      (click)="lang.toggle()"
-      [attr.aria-label]="lang.lang() === 'it' ? 'Switch to English' : 'Passa all\'italiano'"
-    >
+    <button type="button" (click)="lang.toggle()" [attr.aria-label]="'a11y.switchLang' | translate">
       {{ lang.lang() === 'it' ? 'EN' : 'IT' }}
     </button>
     <button
       type="button"
       (click)="theme.toggle()"
-      [attr.aria-label]="theme.theme() === 'dark' ? 'light mode' : 'dark mode'"
+      [attr.aria-label]="
+        (theme.theme() === 'dark' ? 'a11y.lightMode' : 'a11y.darkMode') | translate
+      "
     >
       {{ theme.theme() === 'dark' ? '☀' : '☾' }}
     </button>
@@ -49,7 +47,7 @@
       (click)="toggleMenu()"
       [attr.aria-expanded]="menuOpen()"
       aria-controls="mobile-nav"
-      [attr.aria-label]="menuOpen() ? 'Chiudi menu' : 'Apri menu'"
+      [attr.aria-label]="(menuOpen() ? 'a11y.closeMenu' : 'a11y.openMenu') | translate"
     >
       <span class="bar"></span>
       <span class="bar"></span>
@@ -64,7 +62,7 @@
   class="nav-mobile"
   [class.open]="menuOpen()"
   [attr.inert]="menuOpen() ? null : ''"
-  aria-label="Mobile navigation"
+  [attr.aria-label]="'a11y.mobileNav' | translate"
 >
   <a
     routerLink="/progetti"

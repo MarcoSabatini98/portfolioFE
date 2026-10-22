@@ -21,7 +21,7 @@ export class ProjectDetailComponent {
     const id = this.route.snapshot.paramMap.get('id');
     const found = PROJECTS.find((p) => p.id === id);
     if (!found) {
-      this.router.navigate(['/progetti']);
+      this.router.navigate(['/progetti'], { replaceUrl: true });
       return;
     }
     this.project = found;

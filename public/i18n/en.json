@@ -1,5 +1,10 @@
 {
-  "nav": { "home": "Home", "projects": "Projects", "about": "About", "contact": "Contact" },
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact"
+  },
   "hero": {
     "role": "Full-Stack Developer",
     "tagline": "I build full-stack web apps with Angular, Node and Express — tested, CI/CD-driven, built to last.",
@@ -47,6 +52,29 @@
   "footer": {
     "tagline": "Full-stack developer. I build web apps with Angular, Node and Express.",
     "nav": "Navigate",
-    "contact": "Contact"
+    "contact": "Contact",
+    "built": "Built with Angular 21",
+    "top": "↑ Top"
+  },
+  "badge": {
+    "flagship": "FLAGSHIP",
+    "production": "IN PRODUCTION",
+    "side": "SIDE PROJECT"
+  },
+  "notFound": {
+    "message": "Page not found.",
+    "home": "Back to home"
+  },
+  "a11y": {
+    "home": "Home",
+    "footerNav": "Footer navigation",
+    "backToTop": "Back to top",
+    "mainNav": "Main navigation",
+    "mobileNav": "Mobile navigation",
+    "switchLang": "Switch to Italian",
+    "lightMode": "Light mode",
+    "darkMode": "Dark mode",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   }
 }

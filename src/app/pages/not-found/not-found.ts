@@ -1,15 +1,16 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-not-found',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink],
+  imports: [RouterLink, TranslatePipe],
   template: `
     <section class="wrap">
       <p class="code">404</p>
-      <p class="msg">Pagina non trovata.</p>
-      <a routerLink="/" class="btn">Torna alla home</a>
+      <p class="msg">{{ 'notFound.message' | translate }}</p>
+      <a routerLink="/" class="btn">{{ 'notFound.home' | translate }}</a>
     </section>
   `,
   styles: [

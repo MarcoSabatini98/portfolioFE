@@ -6,6 +6,7 @@ import {
   OnInit,
   PLATFORM_ID,
   Renderer2,
+  RendererStyleFlags2,
   inject,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
@@ -24,7 +25,12 @@ export class RevealDirective implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if (this.delay > 0) {
-      this.renderer.setStyle(this.el.nativeElement, 'transition-delay', `${this.delay}ms`);
+      this.renderer.setStyle(
+        this.el.nativeElement,
+        '--reveal-delay',
+        `${this.delay}ms`,
+        RendererStyleFlags2.DashCase,
+      );
     }
 
     if (!isPlatformBrowser(this.platformId)) {
@@ -67,5 +73,17 @@ export class RevealDirective implements OnInit, OnDestroy {
 
   private reveal(): void {
     this.renderer.addClass(this.el.nativeElement, 'is-visible');
+    // clear the stagger delay once revealed so hover transitions aren't delayed
+    if (this.delay > 0) {
+      setTimeout(
+        () =>
+          this.renderer.removeStyle(
+            this.el.nativeElement,
+            '--reveal-delay',
+            RendererStyleFlags2.DashCase,
+          ),
+        this.delay + 600,
+      );
+    }
   }
 }

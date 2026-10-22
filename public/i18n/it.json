@@ -1,5 +1,10 @@
 {
-  "nav": { "home": "Home", "projects": "Progetti", "about": "Chi sono", "contact": "Contatti" },
+  "nav": {
+    "home": "Home",
+    "projects": "Progetti",
+    "about": "Chi sono",
+    "contact": "Contatti"
+  },
   "hero": {
     "role": "Full-Stack Developer",
     "tagline": "Costruisco web app con Angular, Node ed Express — testate, con CI/CD, pensate per durare.",
@@ -47,6 +52,29 @@
   "footer": {
     "tagline": "Full-stack developer. Costruisco web app con Angular, Node ed Express.",
     "nav": "Naviga",
-    "contact": "Contatti"
+    "contact": "Contatti",
+    "built": "Realizzato con Angular 21",
+    "top": "↑ Su"
+  },
+  "badge": {
+    "flagship": "FLAGSHIP",
+    "production": "IN PRODUZIONE",
+    "side": "SIDE PROJECT"
+  },
+  "notFound": {
+    "message": "Pagina non trovata.",
+    "home": "Torna alla home"
+  },
+  "a11y": {
+    "home": "Home",
+    "footerNav": "Navigazione footer",
+    "backToTop": "Torna su",
+    "mainNav": "Navigazione principale",
+    "mobileNav": "Navigazione mobile",
+    "switchLang": "Passa all'inglese",
+    "lightMode": "Tema chiaro",
+    "darkMode": "Tema scuro",
+    "openMenu": "Apri menu",
+    "closeMenu": "Chiudi menu"
   }
 }

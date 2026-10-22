@@ -1,7 +1,9 @@
 import { countCvDownload } from './analytics';
 
 describe('countCvDownload', () => {
-  afterEach(() => { delete (window as any).goatcounter; });
+  afterEach(() => {
+    delete (window as any).goatcounter;
+  });
 
   it('calls goatcounter.count with an event path', () => {
     const count = vi.fn();

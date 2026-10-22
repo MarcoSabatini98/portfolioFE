@@ -16,7 +16,11 @@ export class ContactComponent {
   readonly linkedin = 'https://www.linkedin.com/in/marco-sabatini-dev/';
   readonly github = 'https://github.com/MarcoSabatini98';
 
-  get cvHref(): string { return `/cv/marco-sabatini-${this.langSvc.lang()}.pdf`; }
+  get cvHref(): string {
+    return `/cv/marco-sabatini-${this.langSvc.lang()}.pdf`;
+  }
 
-  onCvDownload(): void { countCvDownload(this.langSvc.lang()); }
+  onCvDownload(): void {
+    countCvDownload(this.langSvc.lang());
+  }
 }

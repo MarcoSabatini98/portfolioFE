@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
 import { provideTranslateService } from '@ngx-translate/core';
 import { ProjectsComponent } from './projects';
 
@@ -7,7 +8,11 @@ describe('ProjectsComponent', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [ProjectsComponent],
-      providers: [provideHttpClient(), provideTranslateService({ fallbackLang: 'it', lang: 'it' })],
+      providers: [
+        provideRouter([]),
+        provideHttpClient(),
+        provideTranslateService({ fallbackLang: 'it', lang: 'it' }),
+      ],
     }),
   );
 

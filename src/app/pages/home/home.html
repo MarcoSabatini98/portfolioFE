@@ -10,7 +10,7 @@
 </div>
 
 <div appReveal [appRevealDelay]="200">
-  <app-projects />
+  <app-projects [limit]="3" />
   <div class="all-projects-wrap">
     <a routerLink="/progetti" class="all-projects-link">{{ 'home.allProjects' | translate }}</a>
   </div>

@@ -79,7 +79,7 @@ describe('ProjectDetailComponent', () => {
 
     it('calls router.navigate(["/progetti"]) for unknown id', () => {
       TestBed.createComponent(ProjectDetailComponent);
-      expect(navigateSpy).toHaveBeenCalledWith(['/progetti']);
+      expect(navigateSpy).toHaveBeenCalledWith(['/progetti'], { replaceUrl: true });
     });
 
     it('project field is undefined for unknown id', () => {

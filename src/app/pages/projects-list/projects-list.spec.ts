@@ -31,6 +31,16 @@ describe('ProjectsListComponent', () => {
     f.componentInstance.projects.forEach((p) => expect(p.id).toBeTruthy());
   });
 
+  it('card title link points to /progetti/<id>', () => {
+    const f = TestBed.createComponent(ProjectsListComponent);
+    f.detectChanges();
+    const links = f.nativeElement.querySelectorAll('[data-test="project-card"] a.card-link');
+    expect(links.length).toBe(4);
+    links.forEach((a: HTMLAnchorElement, i: number) =>
+      expect(a.getAttribute('href')).toBe('/progetti/' + f.componentInstance.projects[i].id),
+    );
+  });
+
   it('renders demo link only for projects with demoUrl (exactly 1 — infopoint)', () => {
     const f = TestBed.createComponent(ProjectsListComponent);
     f.detectChanges();

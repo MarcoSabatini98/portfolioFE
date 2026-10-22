@@ -9,7 +9,6 @@
         class="card"
         [class.feat]="p.featured"
         data-test="project-card"
-        [routerLink]="['/progetti', p.id]"
         appReveal
         [appRevealDelay]="i * 80"
       >
@@ -18,9 +17,16 @@
         </div>
         <div class="body" [class.feat-body]="p.featured">
           <span class="badge">{{
-            p.featured ? 'FLAGSHIP' : p.id === 'infopoint' ? 'IN PRODUZIONE' : 'SIDE PROJECT'
+            (p.featured
+              ? 'badge.flagship'
+              : p.id === 'infopoint'
+                ? 'badge.production'
+                : 'badge.side'
+            ) | translate
           }}</span>
-          <h2>{{ p.name }}</h2>
+          <h2>
+            <a [routerLink]="['/progetti', p.id]" class="card-link">{{ p.name }}</a>
+          </h2>
           <p class="tagline">{{ p.tagline }}</p>
           <div class="stack">
             @for (t of p.tech; track t) {
@@ -29,24 +35,12 @@
           </div>
           <div class="links">
             @if (p.repoBeUrl) {
-              <a
-                [href]="p.repoBeUrl"
-                target="_blank"
-                rel="noopener"
-                data-test="code-be"
-                (click)="$event.stopPropagation()"
-              >
+              <a [href]="p.repoBeUrl" target="_blank" rel="noopener" data-test="code-be">
                 {{ 'projects.code' | translate }} · BE
               </a>
             }
             @if (p.repoFeUrl) {
-              <a
-                [href]="p.repoFeUrl"
-                target="_blank"
-                rel="noopener"
-                data-test="code-fe"
-                (click)="$event.stopPropagation()"
-              >
+              <a [href]="p.repoFeUrl" target="_blank" rel="noopener" data-test="code-fe">
                 {{ 'projects.code' | translate }} · FE
               </a>
             }
@@ -57,7 +51,6 @@
                 rel="noopener"
                 class="primary"
                 data-test="demo-link"
-                (click)="$event.stopPropagation()"
               >
                 {{ 'projects.demo' | translate }} →
               </a>

@@ -115,13 +115,13 @@ describe('RevealDirective', () => {
   });
 
   describe('delay input', () => {
-    it('sets transition-delay on host when appRevealDelay > 0', () => {
+    it('sets --reveal-delay on host when appRevealDelay > 0', () => {
       mockMatchMedia(false);
       makeIOMock();
       const fixture = TestBed.createComponent(DelayHost);
       fixture.detectChanges();
       const el = fixture.debugElement.query(By.css('[appReveal]')).nativeElement as HTMLElement;
-      expect(el.style.transitionDelay).toBe('200ms');
+      expect(el.style.getPropertyValue('--reveal-delay')).toBe('200ms');
     });
   });
 });

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { AboutComponent } from '../../sections/about/about';
 import { SkillsComponent } from '../../sections/skills/skills';
 import { RevealDirective } from '../../core/reveal.directive';
@@ -6,7 +7,7 @@ import { RevealDirective } from '../../core/reveal.directive';
 @Component({
   selector: 'app-about-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [AboutComponent, SkillsComponent, RevealDirective],
+  imports: [AboutComponent, SkillsComponent, RevealDirective, TranslatePipe],
   templateUrl: './about-page.html',
   styleUrl: './about-page.scss',
 })
