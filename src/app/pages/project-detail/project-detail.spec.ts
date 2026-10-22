@@ -56,6 +56,18 @@ describe('ProjectDetailComponent', () => {
       expect(shots[0].querySelector('img').getAttribute('loading')).toBe('lazy');
     });
 
+    it('renders font specimens and palette, loading the fonts only while open', () => {
+      const f = TestBed.createComponent(ProjectDetailComponent);
+      f.detectChanges();
+      const el: HTMLElement = f.nativeElement;
+      expect(el.querySelectorAll('.font-card').length).toBe(4);
+      expect(el.querySelectorAll('.swatch').length).toBe(7);
+      const sel = 'link[href*="fonts.googleapis.com/css2?family=Young+Serif"]';
+      expect(document.head.querySelector(sel)).toBeTruthy();
+      f.destroy();
+      expect(document.head.querySelector(sel)).toBeNull();
+    });
+
     it('renders code-be and code-fe links with rel="noopener"', () => {
       const f = TestBed.createComponent(ProjectDetailComponent);
       f.detectChanges();

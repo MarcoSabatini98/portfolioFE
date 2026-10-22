@@ -28,6 +28,12 @@ describe('PROJECTS data model', () => {
       }
       expect(en?.features.length, `${project.id} en.features`).toBeGreaterThan(0);
       expect(en?.gallery?.length, `${project.id} en.gallery`).toBe(project.gallery?.length);
+      expect(en?.design?.note, `${project.id} en.design.note`).toBeTruthy();
+      expect(en?.design?.fonts.length, `${project.id} en fonts`).toBe(project.design?.fonts.length);
+      expect(en?.design?.colors.length, `${project.id} en colors`).toBe(
+        project.design?.colors.length,
+      );
+      project.design?.colors.forEach((c) => expect(c.hex).toMatch(/^#[0-9a-f]{6}$/));
     });
   });
 

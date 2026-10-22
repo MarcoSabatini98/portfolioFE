@@ -168,6 +168,82 @@
   }
 }
 
+/* Design: font specimens and palette */
+.sub-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0.75rem 0 0;
+}
+
+.fonts,
+.palette {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.fonts {
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+}
+
+.font-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 1.1rem 1.2rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--fg);
+}
+
+.font-sample {
+  font-size: 2.6rem;
+  line-height: 1.1;
+}
+
+.font-name {
+  font-size: 1.1rem;
+}
+
+.font-role {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.palette {
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+}
+
+.swatch {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.85rem;
+}
+
+.swatch-chip {
+  height: 64px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  margin-bottom: 0.35rem;
+}
+
+.swatch-name {
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.swatch-hex {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
 /* Features */
 .features-grid {
   list-style: none;

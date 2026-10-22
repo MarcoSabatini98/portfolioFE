@@ -19,7 +19,12 @@ export interface Project {
   year?: string;
   /** Detail-page screenshots, shown in order: the first one full width. */
   gallery?: GalleryShot[];
-  /** English copy. Italian (above) is the default; `en.gallery` matches `gallery` by index. */
+  /** Fonts and palette taken from the project's own design tokens. */
+  design?: ProjectDesign;
+  /**
+   * English copy. Italian (above) is the default. Lists match the Italian ones by index:
+   * `en.gallery` → `gallery`, `en.design.fonts` → font roles, `en.design.colors` → color names.
+   */
   en?: ProjectCopy;
 }
 
@@ -29,18 +34,35 @@ export interface GalleryShot {
   text: string;
 }
 
+export interface ProjectDesign {
+  note: string;
+  /** `family` must be a Google Fonts family name: the detail page loads it from there. */
+  fonts: { family: string; role: string }[];
+  colors: { name: string; hex: string }[];
+}
+
 type ProjectCopy = Pick<
   Project,
   'summary' | 'tagline' | 'problem' | 'build' | 'features' | 'role'
 > & {
   gallery?: Omit<GalleryShot, 'src'>[];
+  design?: { note: string; fonts: string[]; colors: string[] };
 };
 
 /** The project with its text in the given language. */
 export function localize(p: Project, lang: Lang): Project {
   if (lang === 'it' || !p.en) return p;
-  const { gallery, ...copy } = p.en;
-  return { ...p, ...copy, gallery: p.gallery?.map((shot, i) => ({ ...shot, ...gallery?.[i] })) };
+  const { gallery, design, ...copy } = p.en;
+  return {
+    ...p,
+    ...copy,
+    gallery: p.gallery?.map((shot, i) => ({ ...shot, ...gallery?.[i] })),
+    design: p.design && {
+      note: design?.note ?? p.design.note,
+      fonts: p.design.fonts.map((f, i) => ({ ...f, role: design?.fonts[i] ?? f.role })),
+      colors: p.design.colors.map((c, i) => ({ ...c, name: design?.colors[i] ?? c.name })),
+    },
+  };
 }
 
 export const PROJECTS: Project[] = [
@@ -129,6 +151,24 @@ export const PROJECTS: Project[] = [
         text: 'Per i prossimi 30 giorni suggerisce sconti o rincari in base all’occupazione e agli eventi in zona, lasciando la decisione al gestore. Sotto, incassi per metodo di pagamento e imposta di soggiorno mese per mese.',
       },
     ],
+    design: {
+      note: 'Due atmosfere nello stesso prodotto: calda e mediterranea per il sito pubblico e l’area ospite, minimale e precisa per il gestionale dello staff. I colori sono token CSS con variante chiara e scura; per adattare il sito a un’altra struttura basta cambiare il colore del brand, senza toccare i componenti.',
+      fonts: [
+        { family: 'Young Serif', role: 'Titoli' },
+        { family: 'Figtree', role: 'Sito pubblico e area ospite' },
+        { family: 'Geist', role: 'Gestionale dello staff' },
+        { family: 'Geist Mono', role: 'Codici e cifre' },
+      ],
+      colors: [
+        { name: 'Oliva (brand)', hex: '#5e6b3a' },
+        { name: 'Ocra', hex: '#a87522' },
+        { name: 'Sfondo', hex: '#f2f1eb' },
+        { name: 'Inchiostro', hex: '#1e292a' },
+        { name: 'Conferma', hex: '#3b7a4c' },
+        { name: 'Errore', hex: '#ae3f37' },
+        { name: 'Info', hex: '#2b6684' },
+      ],
+    },
     en: {
       summary:
         'White-label full-stack platform for hotels and B&Bs: real-time booking engine, Stripe/PayPal payments, front desk, housekeeping, live chat (Socket.IO), analytics, Italian compliance (Alloggiati Web, FatturaPA), OTA sync. 263 tests, OWASP hardening.',
@@ -187,6 +227,11 @@ export const PROJECTS: Project[] = [
           text: 'For the next 30 days it suggests discounts or increases based on occupancy and local events, leaving the decision to the manager. Below, revenue by payment method and tourist tax month by month.',
         },
       ],
+      design: {
+        note: 'Two moods in one product: warm and Mediterranean for the public site and the guest area, minimal and precise for the staff back office. Colors are CSS tokens with light and dark variants; adapting the site to another property only takes changing the brand color, without touching the components.',
+        fonts: ['Headings', 'Public site and guest area', 'Staff back office', 'Codes and figures'],
+        colors: ['Olive (brand)', 'Ochre', 'Background', 'Ink', 'Success', 'Error', 'Info'],
+      },
     },
   },
   {
@@ -239,6 +284,24 @@ export const PROJECTS: Project[] = [
         text: 'I focolai rilevati da NASA FIRMS negli ultimi 5 giorni, con andamento giornaliero, filtri per provincia e una tabella con intensità, potenza radiativa, confidenza e satellite di ogni rilevazione.',
       },
     ],
+    design: {
+      note: 'Un registro da sala di controllo: neutri freddi, una sola famiglia di caratteri per tutta l’interfaccia, il blu del mare come colore primario e la terracotta come accento. Ogni livello di dati (meteo, incendi, traffico, voli, navi) ha un colore proprio, così si riconosce subito.',
+      fonts: [
+        { family: 'Manrope', role: 'Tutta l’interfaccia' },
+        { family: 'Fraunces', role: 'Titoli della pagina news' },
+      ],
+      colors: [
+        { name: 'Mare (primario)', hex: '#007e8f' },
+        { name: 'Terracotta (accento)', hex: '#b95c3a' },
+        { name: 'Sfondo', hex: '#f1f4f6' },
+        { name: 'Inchiostro', hex: '#172028' },
+        { name: 'Meteo', hex: '#2a7fb8' },
+        { name: 'Incendi', hex: '#d1452b' },
+        { name: 'Traffico', hex: '#c98a16' },
+        { name: 'Voli', hex: '#5a4fa3' },
+        { name: 'Navi', hex: '#0b8a86' },
+      ],
+    },
     en: {
       summary:
         'Monitoring dashboard for Sardinia: weather and alerts, satellite-detected wildfires, traffic, flights, ships, fuel prices, rivers, events. Angular 21 + Leaflet, with an Express 5/PostgreSQL API that aggregates and caches public data sources. ~1017 tests, CI/CD.',
@@ -268,6 +331,21 @@ export const PROJECTS: Project[] = [
           text: 'Fire hotspots detected by NASA FIRMS over the last 5 days, with a daily trend, province filters and a table showing the intensity, radiative power, confidence and satellite of each detection.',
         },
       ],
+      design: {
+        note: 'A control-room register: cool neutrals, a single typeface for the whole interface, sea blue as the primary color and terracotta as the accent. Each data layer (weather, wildfires, traffic, flights, ships) has its own color, so it is recognisable at a glance.',
+        fonts: ['The whole interface', 'News page headings'],
+        colors: [
+          'Sea (primary)',
+          'Terracotta (accent)',
+          'Background',
+          'Ink',
+          'Weather',
+          'Wildfires',
+          'Traffic',
+          'Flights',
+          'Ships',
+        ],
+      },
     },
   },
   {
@@ -326,6 +404,24 @@ export const PROJECTS: Project[] = [
         text: 'Gestione di ordini, prodotti, categorie e marche. Ogni cambio di stato di un ordine passa dalle regole del backend e fa partire l’email al cliente.',
       },
     ],
+    design: {
+      note: 'Un look tecnico, da negozio di strumenti: tema scuro predefinito con una grafite blu al posto del nero puro, titoli geometrici e un carattere monospaziato per i dati. I due accenti del brand, celeste e rosa, restano identici nel tema chiaro e in quello scuro.',
+      fonts: [
+        { family: 'Space Grotesk', role: 'Titoli' },
+        { family: 'IBM Plex Sans', role: 'Testo' },
+        { family: 'IBM Plex Mono', role: 'Codici e dati tecnici' },
+      ],
+      colors: [
+        { name: 'Celeste', hex: '#2fd9e6' },
+        { name: 'Rosa', hex: '#ff4d8d' },
+        { name: 'Grafite (sfondo)', hex: '#0b0d12' },
+        { name: 'Superficie', hex: '#161a22' },
+        { name: 'Testo', hex: '#e9edf4' },
+        { name: 'Conferma', hex: '#38d39f' },
+        { name: 'Avviso', hex: '#f5b841' },
+        { name: 'Errore', hex: '#ff5c6c' },
+      ],
+    },
     en: {
       summary:
         'Complete musical instrument e-commerce: Angular 21 storefront and back office, Express 5 + Sequelize/MariaDB API with EAV catalog, variants, Stripe checkout (webhooks), order state machine, PDF invoices with VAT, automated emails, MinIO image storage, Swagger docs.',
@@ -369,6 +465,20 @@ export const PROJECTS: Project[] = [
           text: 'Management of orders, products, categories and brands. Every order status change goes through the backend rules and triggers an email to the customer.',
         },
       ],
+      design: {
+        note: 'A technical look that suits an instrument shop: dark theme by default, with a blue graphite instead of pure black, geometric headings and a monospaced typeface for data. The two brand accents, light blue and pink, stay identical in the light and dark themes.',
+        fonts: ['Headings', 'Body text', 'Codes and technical data'],
+        colors: [
+          'Light blue',
+          'Pink',
+          'Graphite (background)',
+          'Surface',
+          'Text',
+          'Success',
+          'Warning',
+          'Error',
+        ],
+      },
     },
   },
   {
@@ -434,6 +544,19 @@ export const PROJECTS: Project[] = [
         text: 'Al livello Estremo le note sono disattivate, e il gioco lo fa notare con un po’ di ironia. Un dettaglio piccolo, ma è il tipo di cura che mi piace mettere in quello che costruisco.',
       },
     ],
+    design: {
+      note: 'Un’interfaccia pulita che lascia spazio al gioco. Nella griglia ogni colore ha un significato: celle date, cella selezionata, numeri uguali ed errori si distinguono a colpo d’occhio, sia nel tema chiaro sia in quello scuro.',
+      fonts: [{ family: 'Inter', role: 'Tutta l’interfaccia' }],
+      colors: [
+        { name: 'Blu notte', hex: '#1a1a2e' },
+        { name: 'Selezione', hex: '#3b82f6' },
+        { name: 'Evidenziazione', hex: '#dbeafe' },
+        { name: 'Numeri uguali', hex: '#fef08a' },
+        { name: 'Celle date', hex: '#e8e4d8' },
+        { name: 'Errore', hex: '#b91c1c' },
+        { name: 'Sfondo', hex: '#fafafa' },
+      ],
+    },
     en: {
       summary:
         'A collection of web games: Sudoku (4 difficulty levels), Macchiavelli (1 human vs 3 bots) and a crossword generated from the Italian dictionary. Angular 21 frontend, Express 5 REST API for games and records, JSend format, Helmet + rate limiting, Jest + supertest tests.',
@@ -475,6 +598,19 @@ export const PROJECTS: Project[] = [
           text: 'On the Extreme level notes are disabled, and the game points it out with a touch of irony. A small detail, but it’s the kind of care I like to put into what I build.',
         },
       ],
+      design: {
+        note: 'A clean interface that leaves room for the game. In the grid every color has a meaning: given cells, the selected cell, matching numbers and errors stand out at a glance, in both the light and dark themes.',
+        fonts: ['The whole interface'],
+        colors: [
+          'Midnight blue',
+          'Selection',
+          'Highlight',
+          'Matching numbers',
+          'Given cells',
+          'Error',
+          'Background',
+        ],
+      },
     },
   },
 ];
