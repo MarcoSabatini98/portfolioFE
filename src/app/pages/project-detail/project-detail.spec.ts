@@ -48,6 +48,14 @@ describe('ProjectDetailComponent', () => {
       expect(items.length).toBeGreaterThan(0);
     });
 
+    it('renders one gallery figure per screenshot', () => {
+      const f = TestBed.createComponent(ProjectDetailComponent);
+      f.detectChanges();
+      const shots = f.nativeElement.querySelectorAll('.shot');
+      expect(shots.length).toBe(8);
+      expect(shots[0].querySelector('img').getAttribute('loading')).toBe('lazy');
+    });
+
     it('renders code-be and code-fe links with rel="noopener"', () => {
       const f = TestBed.createComponent(ProjectDetailComponent);
       f.detectChanges();
