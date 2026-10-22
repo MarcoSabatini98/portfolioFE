@@ -213,7 +213,9 @@ h2 {
     align-items: stretch;
   }
 
-  .shot-wrap.row-shot {
+  /* .feat too: Angular's scoping makes `.feat .shot-wrap` outrank `.shot-wrap.row-shot` */
+  .shot-wrap.row-shot,
+  .feat .shot-wrap {
     flex: none;
     aspect-ratio: 16 / 10;
     min-height: unset;
