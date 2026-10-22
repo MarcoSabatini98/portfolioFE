@@ -1,14 +1,15 @@
 .contact {
-  max-width: 720px;
+  max-width: 1040px;
   margin: 0 auto;
   padding: clamp(3.5rem, 9vh, 6rem) 1.5rem clamp(4rem, 10vh, 8rem);
-  text-align: center;
 }
 
 .sec-head {
-  margin-bottom: 1.5rem;
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 3rem;
 
-  span {
+  > span {
     color: var(--accent);
     font-weight: 700;
     font-size: 0.82rem;
@@ -23,45 +24,158 @@
   }
 }
 
-.body-text {
+.lead {
   color: var(--muted);
-  margin-bottom: 2rem;
-  font-size: clamp(1rem, 2vw, 1.1rem);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  line-height: 1.7;
+  margin-top: 1rem;
 }
 
-.links {
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 1.5rem;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--fg);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+/* Contact cards */
+.cards {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.card {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.35rem;
+  height: 100%;
+  padding: 1.6rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--card);
+  color: inherit;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 
-  a {
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--fg);
-    padding: 0.6rem 0;
+  &:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: var(--shadow);
+  }
 
-    &:hover {
-      color: var(--accent);
-    }
+  &:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+}
 
-    &.primary {
-      padding: 0.75rem 1.5rem;
-      background: var(--accent);
-      color: var(--accent-fg);
-      border-radius: 11px;
-      box-shadow: var(--shadow);
-      transition:
-        transform 0.15s ease,
-        box-shadow 0.15s ease;
+.icon {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 0.75rem;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
 
-      &:hover {
-        color: var(--accent-fg);
-        transform: translateY(-2px);
-        box-shadow: 0 26px 50px -22px rgba(59, 84, 214, 0.55);
-      }
-    }
+.label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.value {
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: var(--fg);
+  overflow-wrap: anywhere;
+}
+
+.desc {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+/* CV block */
+.cv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+  padding: 1.6rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--accent-soft);
+
+  h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  p {
+    color: var(--muted);
+    font-size: 0.93rem;
+  }
+}
+
+.cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-shrink: 0;
+  padding: 0.8rem 1.4rem;
+  border-radius: 11px;
+  background: var(--accent);
+  color: var(--accent-fg);
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+}
+
+@media (max-width: 860px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .cv {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 

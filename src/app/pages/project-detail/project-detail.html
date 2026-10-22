@@ -19,7 +19,7 @@
       </header>
 
       <div class="hero-img-wrap" appReveal [appRevealDelay]="120">
-        <img class="hero-img" [src]="project.image" [alt]="project.name" />
+        <app-shots class="hero-img" [shots]="project.shots" [alt]="project.name" loading="eager" />
       </div>
 
       <section class="detail-section" appReveal [appRevealDelay]="160">

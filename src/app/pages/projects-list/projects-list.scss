@@ -38,8 +38,8 @@
   box-shadow: 0 14px 34px -26px rgba(19, 22, 32, 0.4);
   position: relative;
   transition:
-    opacity 0.5s ease var(--reveal-delay, 0ms),
-    transform 0.5s ease var(--reveal-delay, 0ms),
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
     box-shadow 0.2s ease;
   cursor: pointer;
   text-decoration: none;
@@ -50,11 +50,21 @@
     box-shadow: var(--shadow);
   }
 
-  &.feat {
+  /* Horizontal full-width card: flagship, or the last odd regular card */
+  &.row {
     grid-column: 1 / -1;
     flex-direction: row;
     gap: 2rem;
     align-items: center;
+  }
+
+  /* Flagship: taller so it reads as the main project */
+  &.feat {
+    padding: 2rem;
+
+    h2 {
+      font-size: 1.6rem;
+    }
   }
 }
 
@@ -67,19 +77,21 @@
   display: grid;
   place-items: center;
 
-  &.feat-shot {
+  &.row-shot {
     flex: 1 1 46%;
     align-self: stretch;
     aspect-ratio: unset;
-    min-height: 200px;
+    min-height: 280px;
   }
+}
+
+.feat .shot-wrap {
+  min-height: 360px;
 }
 
 .shot {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  display: block;
   border-radius: 12px;
 }
 
@@ -89,7 +101,7 @@
   gap: 0.85rem;
   flex: 1;
 
-  &.feat-body {
+  &.row-body {
     flex: 1 1 54%;
   }
 }
@@ -196,12 +208,12 @@ h2 {
     grid-template-columns: 1fr;
   }
 
-  .card.feat {
+  .card.row {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .shot-wrap.feat-shot {
+  .shot-wrap.row-shot {
     flex: none;
     aspect-ratio: 16 / 10;
     min-height: unset;

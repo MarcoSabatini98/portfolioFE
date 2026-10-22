@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { countCvDownload } from '../../core/analytics';
 import { LangService } from '../../core/lang.service';
+import { IconComponent } from '../icon/icon';
 
 @Component({
   selector: 'app-footer',
-  imports: [TranslatePipe, RouterLink],
+  imports: [TranslatePipe, RouterLink, RouterLinkActive, IconComponent],
   templateUrl: './footer.html',
   styleUrl: './footer.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

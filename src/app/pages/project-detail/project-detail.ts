@@ -3,10 +3,11 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { RevealDirective } from '../../core/reveal.directive';
 import { PROJECTS, Project } from '../../data/projects';
+import { ShotsComponent } from '../../shared/shots/shots';
 
 @Component({
   selector: 'app-project-detail',
-  imports: [TranslatePipe, RouterLink, RevealDirective],
+  imports: [TranslatePipe, RouterLink, RevealDirective, ShotsComponent],
   templateUrl: './project-detail.html',
   styleUrl: './project-detail.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

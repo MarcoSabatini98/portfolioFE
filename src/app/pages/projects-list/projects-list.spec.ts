@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { provideTranslateService } from '@ngx-translate/core';
+import { PROJECTS } from '../../data/projects';
 import { ProjectsListComponent } from './projects-list';
 
 describe('ProjectsListComponent', () => {
@@ -41,11 +42,26 @@ describe('ProjectsListComponent', () => {
     );
   });
 
-  it('renders demo link only for projects with demoUrl (exactly 1 — infopoint)', () => {
+  it('renders demo link only for projects with demoUrl', () => {
     const f = TestBed.createComponent(ProjectsListComponent);
     f.detectChanges();
-    const demoLinks = f.nativeElement.querySelectorAll('[data-test="demo-link"]');
-    expect(demoLinks.length).toBe(1);
+    const demoLinks: HTMLAnchorElement[] = Array.from(
+      f.nativeElement.querySelectorAll('[data-test="demo-link"]'),
+    );
+    expect(demoLinks.map((a) => a.getAttribute('href'))).toEqual(
+      PROJECTS.filter((p) => p.demoUrl).map((p) => p.demoUrl),
+    );
+  });
+
+  it('odd count of regular projects: only the last one goes horizontal', () => {
+    const f = TestBed.createComponent(ProjectsListComponent);
+    f.detectChanges();
+    const cards: HTMLElement[] = Array.from(
+      f.nativeElement.querySelectorAll('[data-test="project-card"]'),
+    );
+    const wide = cards.filter((c) => c.classList.contains('row') && !c.classList.contains('feat'));
+    expect(wide.length).toBe(1);
+    expect(wide[0]).toBe(cards[cards.length - 1]);
   });
 
   it('inner links have rel="noopener"', () => {

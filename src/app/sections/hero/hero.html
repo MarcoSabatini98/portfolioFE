@@ -1,6 +1,9 @@
 <section id="hero" class="hero">
-  <span class="pill"><b>●</b> {{ 'hero.role' | translate }}</span>
-  <h1>Marco <span class="grad">Sabatini</span></h1>
+  <span class="pill"><b>●</b> Marco Sabatini · {{ 'hero.role' | translate }}</span>
+  <h1>
+    {{ 'hero.headline' | translate }}
+    <span class="grad">{{ 'hero.headlineAccent' | translate }}</span>
+  </h1>
   <p class="lead">{{ 'hero.tagline' | translate }}</p>
   <div class="cta">
     <a routerLink="/progetti" class="btn btn-primary">{{ 'hero.cta_projects' | translate }}</a>

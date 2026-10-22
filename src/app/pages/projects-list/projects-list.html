@@ -5,17 +5,19 @@
   </div>
   <div class="grid">
     @for (p of projects; track p.id; let i = $index) {
+      @let row = p.featured || p.id === wideId;
       <article
         class="card"
         [class.feat]="p.featured"
+        [class.row]="row"
         data-test="project-card"
         appReveal
         [appRevealDelay]="i * 80"
       >
-        <div class="shot-wrap" [class.feat-shot]="p.featured">
-          <img class="shot" [src]="p.image" [alt]="p.name" loading="lazy" />
+        <div class="shot-wrap" [class.row-shot]="row">
+          <app-shots class="shot" [shots]="p.shots" [alt]="p.name" />
         </div>
-        <div class="body" [class.feat-body]="p.featured">
+        <div class="body" [class.row-body]="row">
           <span class="badge">{{
             (p.featured
               ? 'badge.flagship'

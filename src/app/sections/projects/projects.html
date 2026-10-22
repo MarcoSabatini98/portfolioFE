@@ -7,7 +7,7 @@
     @for (p of visible(); track p.id) {
       <article class="card" [class.feat]="p.featured" data-test="project-card">
         <div class="shot-wrap" [class.feat-shot]="p.featured">
-          <img class="shot" [src]="p.image" [alt]="p.name" loading="lazy" />
+          <app-shots class="shot" [shots]="p.shots" [alt]="p.name" />
         </div>
         <div class="body" [class.feat-body]="p.featured">
           <span class="badge">{{

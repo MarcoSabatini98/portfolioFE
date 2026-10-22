@@ -1,7 +1,17 @@
 <section id="about" class="about">
-  <div class="sec-head">
-    <span>{{ 'nav.about' | translate }}</span>
-    <h2>{{ 'about.title' | translate }}</h2>
+  <img
+    class="photo"
+    src="/img/marco-sabatini.jpg"
+    width="600"
+    height="800"
+    [alt]="'about.photoAlt' | translate"
+  />
+  <div class="text">
+    <div class="sec-head">
+      <span>{{ 'nav.about' | translate }}</span>
+      <h2>{{ 'about.title' | translate }}</h2>
+    </div>
+    <p>{{ 'about.body' | translate }}</p>
+    <p>{{ 'about.path' | translate }}</p>
   </div>
-  <p>{{ 'about.body' | translate }}</p>
 </section>

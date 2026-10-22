@@ -13,7 +13,17 @@
   border-bottom: 1px solid var(--border);
 }
 
+/* Logo + name: one clickable block */
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  color: var(--fg);
+  flex-shrink: 0;
+}
+
+.brand-tile {
   display: inline-grid;
   place-items: center;
   width: 38px;
@@ -21,16 +31,29 @@
   border-radius: 10px;
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
   color: var(--accent-fg);
-  font-weight: 800;
-  font-size: 1rem;
-  text-decoration: none;
+  font-family: 'Dancing Script', cursive;
+  font-weight: 700;
+  font-size: 1.2rem;
+  line-height: 1;
   box-shadow: var(--shadow);
-  flex-shrink: 0;
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 1.05rem;
+  white-space: nowrap;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
 }
 
 /* Desktop nav */
 .nav-desktop {
   display: flex;
+  align-items: center;
   gap: 1.7rem;
 }
 
@@ -45,10 +68,28 @@
   color: var(--fg);
 }
 
-.nav-desktop a.active {
+.nav-desktop a.active:not(.nav-cta) {
   color: var(--accent);
   border-bottom: 2px solid var(--accent);
   padding-bottom: 2px;
+}
+
+/* "Contatti" highlighted as a pill */
+.nav-desktop a.nav-cta {
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 0.45rem 1.1rem;
+  font-weight: 600;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.nav-desktop a.nav-cta:hover,
+.nav-desktop a.nav-cta.active {
+  background: var(--accent);
+  color: var(--accent-fg);
 }
 
 /* Controls */
@@ -74,15 +115,59 @@
   justify-content: center;
 }
 
-/* Hamburger */
+/* Hover label under lang/theme buttons */
+.has-tip {
+  position: relative;
+}
+
+.has-tip::after {
+  content: attr(data-tip);
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translate(-50%, -4px);
+  padding: 0.35rem 0.65rem;
+  border-radius: 7px;
+  background: var(--fg);
+  color: var(--bg);
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+
+.has-tip:hover::after,
+.has-tip:focus-visible::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* Touch screens: no hover, no label */
+@media (hover: none) {
+  .has-tip::after {
+    display: none;
+  }
+}
+
+/* Hamburger (shown only <=1024px) */
 .hamburger {
   display: none;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   gap: 5px;
-  padding: 0.5rem !important;
-  min-width: 44px !important;
-  min-height: 44px !important;
+  padding: 0.5rem;
+  min-width: 44px;
+  min-height: 44px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  cursor: pointer;
 }
 
 .bar {
@@ -132,7 +217,8 @@
   color: var(--accent);
 }
 
-@media (max-width: 640px) {
+/* Phone + tablet: page links move into the hamburger */
+@media (max-width: 1024px) {
   .nav-desktop {
     display: none;
   }
@@ -141,8 +227,24 @@
     display: inline-flex;
   }
 
-  .controls button:not(.hamburger) {
+  .nav-right {
+    gap: 0.5rem;
+  }
+
+  .controls button {
     min-width: 44px;
     min-height: 44px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .nav-mobile.open {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .brand-name {
+    display: none;
   }
 }

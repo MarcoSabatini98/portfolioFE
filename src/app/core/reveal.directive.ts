@@ -61,7 +61,7 @@ export class RevealDirective implements OnInit, OnDestroy {
           }
         }
       },
-      { threshold: 0.15 },
+      { threshold: 0, rootMargin: '0px 0px -20% 0px' },
     );
 
     this.observer.observe(this.el.nativeElement);
@@ -82,7 +82,7 @@ export class RevealDirective implements OnInit, OnDestroy {
             '--reveal-delay',
             RendererStyleFlags2.DashCase,
           ),
-        this.delay + 600,
+        this.delay + 900,
       );
     }
   }

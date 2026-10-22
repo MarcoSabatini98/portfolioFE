@@ -2,10 +2,11 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 import { countCvDownload } from '../../core/analytics';
 import { LangService } from '../../core/lang.service';
+import { IconComponent } from '../../shared/icon/icon';
 
 @Component({
   selector: 'app-contact',
-  imports: [TranslatePipe],
+  imports: [TranslatePipe, IconComponent],
   templateUrl: './contact.html',
   styleUrl: './contact.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

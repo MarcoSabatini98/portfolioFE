@@ -4,10 +4,18 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { ThemeService } from './core/theme.service';
 import { LangService } from './core/lang.service';
 import { FooterComponent } from './shared/footer/footer';
+import { IconComponent } from './shared/icon/icon';
 
 @Component({
   selector: 'app-root',
-  imports: [TranslatePipe, RouterOutlet, RouterLink, RouterLinkActive, FooterComponent],
+  imports: [
+    TranslatePipe,
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
+    FooterComponent,
+    IconComponent,
+  ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })

@@ -2,10 +2,11 @@ import { ChangeDetectionStrategy, Component, computed, input } from '@angular/co
 import { RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { PROJECTS } from '../../data/projects';
+import { ShotsComponent } from '../../shared/shots/shots';
 
 @Component({
   selector: 'app-projects',
-  imports: [TranslatePipe, RouterLink],
+  imports: [TranslatePipe, RouterLink, ShotsComponent],
   templateUrl: './projects.html',
   styleUrl: './projects.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

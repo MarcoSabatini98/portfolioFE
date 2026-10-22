@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { provideTranslateService } from '@ngx-translate/core';
+import { PROJECTS } from '../../data/projects';
 import { ProjectsComponent } from './projects';
 
 describe('ProjectsComponent', () => {
@@ -32,10 +33,14 @@ describe('ProjectsComponent', () => {
     expect(feLinks.length).toBe(4);
   });
 
-  it('renders demo link only for projects with demoUrl (exactly 1 — infopoint)', () => {
+  it('renders demo link only for projects with demoUrl', () => {
     const f = TestBed.createComponent(ProjectsComponent);
     f.detectChanges();
-    const demoLinks = f.nativeElement.querySelectorAll('[data-test="demo-link"]');
-    expect(demoLinks.length).toBe(1);
+    const demoLinks: HTMLAnchorElement[] = Array.from(
+      f.nativeElement.querySelectorAll('[data-test="demo-link"]'),
+    );
+    expect(demoLinks.map((a) => a.getAttribute('href'))).toEqual(
+      PROJECTS.filter((p) => p.demoUrl).map((p) => p.demoUrl),
+    );
   });
 });

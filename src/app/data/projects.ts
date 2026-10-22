@@ -1,4 +1,3 @@
-// ponytail: image paths are placeholder SVGs — swap for real screenshots when available
 export interface Project {
   id: string;
   name: string;
@@ -7,7 +6,8 @@ export interface Project {
   repoBeUrl?: string;
   repoFeUrl?: string;
   demoUrl?: string;
-  image: string;
+  /** Screenshots, light first. One entry = static image. */
+  shots: string[];
   featured?: boolean;
   tagline: string;
   problem: string;
@@ -36,8 +36,8 @@ export const PROJECTS: Project[] = [
     ],
     repoBeUrl: 'https://github.com/MarcoSabatini98/progettoBE',
     repoFeUrl: 'https://github.com/MarcoSabatini98/progettoFE',
-    demoUrl: '',
-    image: '/img/progetto.svg',
+    demoUrl: 'https://hotellequerce.vercel.app',
+    shots: ['/img/projects/progetto-light.webp', '/img/projects/progetto-dark.webp'],
     featured: true,
     tagline: 'Piattaforma gestionale white-label per hotel e B&B.',
     problem:
@@ -71,7 +71,7 @@ export const PROJECTS: Project[] = [
     repoBeUrl: 'https://github.com/MarcoSabatini98/infopointSardiniaBE',
     repoFeUrl: 'https://github.com/MarcoSabatini98/infopointSardiniaFE',
     demoUrl: 'https://infopointsardinia.vercel.app',
-    image: '/img/infopoint.svg',
+    shots: ['/img/projects/infopoint-light.webp'],
     tagline: 'Portale per scoprire eventi attivi in Sardegna.',
     problem:
       "Gli eventi attivi sull'isola sono dispersi tra fonti diverse; manca un posto unico per cercarli e filtrarli.",
@@ -95,8 +95,8 @@ export const PROJECTS: Project[] = [
     tech: ['Angular 21', 'Express 5', 'Sequelize', 'MariaDB', 'Stripe', 'Swagger', 'JWT'],
     repoBeUrl: 'https://github.com/MarcoSabatini98/celesterosaBE',
     repoFeUrl: 'https://github.com/MarcoSabatini98/celesterosaFE',
-    demoUrl: '',
-    image: '/img/celesterosa.svg',
+    demoUrl: 'https://celesterosa.vercel.app',
+    shots: ['/img/projects/celesterosa-light.webp', '/img/projects/celesterosa-dark.webp'],
     tagline: 'E-commerce di strumenti musicali.',
     problem:
       'Vendere strumenti musicali online richiede un catalogo ricco con attributi diversi per categoria, varianti di prodotto, pagamenti e fatturazione italiana.',
@@ -122,8 +122,8 @@ export const PROJECTS: Project[] = [
     tech: ['Node.js', 'Express 5', 'Sequelize', 'MariaDB', 'Joi', 'Jest'],
     repoBeUrl: 'https://github.com/MarcoSabatini98/sudokuBE',
     repoFeUrl: 'https://github.com/MarcoSabatini98/sudokuFE',
-    demoUrl: '',
-    image: '/img/multigame.svg',
+    demoUrl: 'https://multigame-m.vercel.app',
+    shots: ['/img/projects/multigame-light.webp', '/img/projects/multigame-dark.webp'],
     tagline: 'API REST multi-gioco: Sudoku, Macchiavelli e Cruciverba.',
     problem:
       'Un backend unico per più giochi, con generazione di puzzle, persistenza delle partite e record per difficoltà.',
