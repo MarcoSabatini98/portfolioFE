@@ -9,6 +9,8 @@ import { ChangeDetectionStrategy, Component, computed, input, signal } from '@an
   styles: `
     :host {
       display: grid;
+      /* minmax(0) so the screenshots' natural width can't widen the page */
+      grid-template-columns: minmax(0, 1fr);
       position: relative;
       overflow: hidden;
     }
