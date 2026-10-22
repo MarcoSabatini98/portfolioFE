@@ -59,7 +59,13 @@
 </header>
 
 <!-- Mobile nav dropdown -->
-<nav id="mobile-nav" class="nav-mobile" [class.open]="menuOpen()" aria-label="Mobile navigation">
+<nav
+  id="mobile-nav"
+  class="nav-mobile"
+  [class.open]="menuOpen()"
+  [attr.inert]="menuOpen() ? null : ''"
+  aria-label="Mobile navigation"
+>
   <a
     routerLink="/progetti"
     routerLinkActive="active"
