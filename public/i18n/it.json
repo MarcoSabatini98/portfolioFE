@@ -23,7 +23,7 @@
   "about": {
     "pageTitle": "Chi sono",
     "title": "Chi sono",
-    "body": "Sviluppatore full-stack junior con una formazione IFTS e un metodo preso sul serio: TypeScript ovunque, test prima del merge, CI/CD e lint come abitudine. Mi piace il lavoro che non si vede — architettura a layer, vincoli di integrità nel database, hardening di sicurezza — perché è lì che un progetto regge nel tempo. Costruisco con Angular, Node/Express e Sequelize. Cerco un team dove continuare a imparare e spedire codice di cui fidarsi.",
+    "body": "Ciao, mi chiamo Marco Sabatini, ho 28 anni e sono uno sviluppatore full-stack junior con una formazione IFTS e un metodo preso sul serio: TypeScript ovunque, test prima del merge, CI/CD e lint come abitudine. Mi piace il lavoro che non si vede — architettura a layer, vincoli di integrità nel database, hardening di sicurezza — perché è lì che un progetto regge nel tempo. Costruisco con Angular, uno dei miei framework preferiti, uso Node/Express e Sequelize nei miei backend e mi piace dare il massimo in HTML e CSS nei miei frontend. Cerco un team dove continuare a imparare e spedire codice di cui fidarsi.",
     "path": "Non arrivo da un percorso informatico classico. Sono perito elettrotecnico e prima dello sviluppo ho lavorato come impiantista, in magazzino e nelle consegne: lavori concreti, dove le cose devono funzionare. Porto lo stesso approccio nel codice.",
     "photoAlt": "Foto di Marco Sabatini"
   },
