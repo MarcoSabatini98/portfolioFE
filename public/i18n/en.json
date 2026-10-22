@@ -57,6 +57,9 @@
     "problem": "The problem",
     "build": "What I built",
     "gallery": "Inside the project",
+    "design": "Visual identity",
+    "fonts": "Fonts",
+    "palette": "Color palette",
     "features": "Features",
     "stack": "Stack"
   },

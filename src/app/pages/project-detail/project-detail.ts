@@ -1,8 +1,10 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { ChangeDetectionStrategy, Component, DestroyRef, computed, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
+import { LangService } from '../../core/lang.service';
 import { RevealDirective } from '../../core/reveal.directive';
-import { PROJECTS, Project } from '../../data/projects';
+import { PROJECTS, Project, localize } from '../../data/projects';
 import { ShotsComponent } from '../../shared/shots/shots';
 
 @Component({
@@ -13,7 +15,9 @@ import { ShotsComponent } from '../../shared/shots/shots';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectDetailComponent {
-  project: Project | undefined;
+  private readonly found?: Project;
+  private readonly lang = inject(LangService).lang;
+  readonly project = computed(() => this.found && localize(this.found, this.lang()));
 
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
@@ -25,10 +29,33 @@ export class ProjectDetailComponent {
       this.router.navigate(['/progetti'], { replaceUrl: true });
       return;
     }
-    this.project = found;
+    this.found = found;
+    this.loadFonts(found);
   }
 
   get hasLinks(): boolean {
-    return !!(this.project?.repoBeUrl || this.project?.repoFeUrl || this.project?.demoUrl);
+    return !!(this.found?.repoBeUrl || this.found?.repoFeUrl || this.found?.demoUrl);
+  }
+
+  /** CSS font stack for a specimen: the family plus a sensible generic fallback. */
+  fontStack(family: string): string {
+    const generic = /Mono/.test(family)
+      ? 'monospace'
+      : /Serif|Fraunces/.test(family)
+        ? 'serif'
+        : 'sans-serif';
+    return `'${family}', ${generic}`;
+  }
+
+  /** Loads this project's fonts from Google Fonts only while its page is open. */
+  private loadFonts(p: Project): void {
+    const families = p.design?.fonts.map((f) => 'family=' + f.family.replaceAll(' ', '+'));
+    if (!families?.length) return;
+    const doc = inject(DOCUMENT);
+    const link = doc.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = `https://fonts.googleapis.com/css2?${families.join('&')}&display=swap`;
+    doc.head.appendChild(link);
+    inject(DestroyRef).onDestroy(() => link.remove());
   }
 }
