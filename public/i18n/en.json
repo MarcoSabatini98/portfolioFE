@@ -23,7 +23,7 @@
   "about": {
     "pageTitle": "About",
     "title": "About",
-    "body": "Junior full-stack developer with an IFTS background and a method I take seriously: TypeScript everywhere, tests before merge, CI/CD and linting as a habit. I like the work you don't see — layered architecture, database-level integrity constraints, security hardening — because that's where a project holds up over time. I build with Angular, Node/Express and Sequelize. I'm looking for a team where I can keep learning and ship code worth trusting.",
+    "body": "Hi, my name is Marco Sabatini. I'm 28 years old and I'm a junior full-stack developer with an IFTS background. I take my development process seriously: I use TypeScript everywhere, ensure tests are run before any merge, and make CI/CD and linting a standard part of my workflow. I'm drawn to the \"invisible\" aspects of development—layered architecture, database integrity constraints, and security hardening—because that's what ensures a project stands the test of time. I build using Angular (one of my favorite frameworks), I work with Node/Express and Sequelize for backends, and take pride in crafting high-quality HTML and CSS for my frontends. I'm looking for a team where I can continue to learn and ship code that can be trusted.",
     "path": "I don't come from a classic IT path. I'm a qualified electrical technician, and before software I worked as an electrician, in warehouses and in deliveries: hands-on jobs where things have to work. I bring the same approach to code.",
     "photoAlt": "Photo of Marco Sabatini"
   },
