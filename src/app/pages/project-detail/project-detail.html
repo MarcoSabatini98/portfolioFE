@@ -32,6 +32,30 @@
         <p class="body-text">{{ project.build }}</p>
       </section>
 
+      @if (project.gallery?.length) {
+        <section class="detail-section" appReveal [appRevealDelay]="220">
+          <h2>{{ 'detail.gallery' | translate }}</h2>
+          <div class="gallery">
+            @for (shot of project.gallery; track shot.src) {
+              <figure class="shot">
+                <a [href]="shot.src" target="_blank" rel="noopener">
+                  <img
+                    [src]="shot.src"
+                    [alt]="project.name + ' — ' + shot.title"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+                <figcaption>
+                  <strong>{{ shot.title }}</strong>
+                  {{ shot.text }}
+                </figcaption>
+              </figure>
+            }
+          </div>
+        </section>
+      }
+
       <section class="detail-section" appReveal [appRevealDelay]="240">
         <h2>{{ 'detail.features' | translate }}</h2>
         <ul class="features-grid">
