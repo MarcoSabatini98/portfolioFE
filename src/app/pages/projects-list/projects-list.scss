@@ -77,16 +77,10 @@
   display: grid;
   place-items: center;
 
+  /* Keeps the screenshots' 16:10 so nothing is cropped; the wider column makes the flagship bigger */
   &.row-shot {
-    flex: 1 1 46%;
-    align-self: stretch;
-    aspect-ratio: unset;
-    min-height: 280px;
+    flex: 1 1 54%;
   }
-}
-
-.feat .shot-wrap {
-  min-height: 360px;
 }
 
 .shot {
@@ -102,7 +96,7 @@
   flex: 1;
 
   &.row-body {
-    flex: 1 1 54%;
+    flex: 1 1 46%;
   }
 }
 
@@ -215,9 +209,6 @@ h2 {
 
   .shot-wrap.row-shot {
     flex: none;
-    aspect-ratio: 16 / 10;
-    min-height: unset;
-    align-self: auto;
   }
 }
 
