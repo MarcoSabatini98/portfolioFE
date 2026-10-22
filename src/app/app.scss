@@ -1,7 +1,7 @@
 .nav {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 20;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -12,6 +12,7 @@
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
+
 .brand {
   display: inline-grid;
   place-items: center;
@@ -26,28 +27,37 @@
   box-shadow: var(--shadow);
   flex-shrink: 0;
 }
-nav {
+
+/* Desktop nav */
+.nav-desktop {
   display: flex;
   gap: 1.7rem;
 }
-nav a {
+
+.nav-desktop a {
   text-decoration: none;
   color: var(--muted);
   font-size: 0.93rem;
   font-weight: 500;
 }
-nav a:hover {
+
+.nav-desktop a:hover {
   color: var(--fg);
 }
-nav a.active {
+
+.nav-desktop a.active {
   color: var(--accent);
   border-bottom: 2px solid var(--accent);
   padding-bottom: 2px;
 }
+
+/* Controls */
 .controls {
   display: flex;
   gap: 0.5rem;
+  align-items: center;
 }
+
 .controls button {
   background: var(--card);
   border: 1px solid var(--border);
@@ -59,12 +69,79 @@ nav a.active {
   font-weight: 600;
   min-width: 40px;
   min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  padding: 0.5rem !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+}
+
+.bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--fg);
+  border-radius: 2px;
+  transition: opacity 0.15s ease;
+}
+
+/* Mobile dropdown nav */
+.nav-mobile {
+  display: none;
+  position: sticky;
+  top: 68px;
+  z-index: 19;
+  flex-direction: column;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem max(1.5rem, calc((100% - 1040px) / 2));
+  gap: 0;
+}
+
+.nav-mobile.open {
+  display: flex;
+}
+
+.nav-mobile a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--border);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-mobile a:last-child {
+  border-bottom: none;
+}
+
+.nav-mobile a:hover,
+.nav-mobile a.active {
+  color: var(--accent);
+}
+
 @media (max-width: 640px) {
-  nav {
+  .nav-desktop {
     display: none;
   }
-  .controls button {
+
+  .hamburger {
+    display: inline-flex;
+  }
+
+  .controls button:not(.hamburger) {
     min-width: 44px;
     min-height: 44px;
   }

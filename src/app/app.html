@@ -1,6 +1,8 @@
 <header class="nav">
   <a routerLink="/" class="brand">M</a>
-  <nav>
+
+  <!-- Desktop nav -->
+  <nav class="nav-desktop" aria-label="Main navigation">
     <a
       routerLink="/progetti"
       routerLinkActive="active"
@@ -23,6 +25,7 @@
       >{{ 'nav.contact' | translate }}</a
     >
   </nav>
+
   <div class="controls">
     <button
       type="button"
@@ -38,8 +41,47 @@
     >
       {{ theme.theme() === 'dark' ? '☀' : '☾' }}
     </button>
+
+    <!-- Hamburger (mobile only) -->
+    <button
+      type="button"
+      class="hamburger"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="mobile-nav"
+      [attr.aria-label]="menuOpen() ? 'Chiudi menu' : 'Apri menu'"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
   </div>
 </header>
+
+<!-- Mobile nav dropdown -->
+<nav id="mobile-nav" class="nav-mobile" [class.open]="menuOpen()" aria-label="Mobile navigation">
+  <a
+    routerLink="/progetti"
+    routerLinkActive="active"
+    #rlaMP="routerLinkActive"
+    [attr.aria-current]="rlaMP.isActive ? 'page' : null"
+    >{{ 'nav.projects' | translate }}</a
+  >
+  <a
+    routerLink="/chi-sono"
+    routerLinkActive="active"
+    #rlaMA="routerLinkActive"
+    [attr.aria-current]="rlaMA.isActive ? 'page' : null"
+    >{{ 'nav.about' | translate }}</a
+  >
+  <a
+    routerLink="/contatti"
+    routerLinkActive="active"
+    #rlaMMC="routerLinkActive"
+    [attr.aria-current]="rlaMMC.isActive ? 'page' : null"
+    >{{ 'nav.contact' | translate }}</a
+  >
+</nav>
 
 <main>
   <router-outlet />
