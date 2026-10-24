@@ -1,4 +1,4 @@
-import { countCvDownload } from './analytics';
+import { countCvDownload, countPageView } from './analytics';
 
 describe('countCvDownload', () => {
   afterEach(() => {
@@ -16,5 +16,22 @@ describe('countCvDownload', () => {
 
   it('does not throw when goatcounter is absent', () => {
     expect(() => countCvDownload('en')).not.toThrow();
+  });
+});
+
+describe('countPageView', () => {
+  afterEach(() => {
+    delete (window as any).goatcounter;
+  });
+
+  it('skips the first load, then counts navigations once per path', () => {
+    const count = vi.fn();
+    (window as any).goatcounter = { count };
+    countPageView('/', true);
+    countPageView('/#contatti');
+    countPageView('/progetti');
+    countPageView('/progetti#top');
+    expect(count).toHaveBeenCalledTimes(1);
+    expect(count).toHaveBeenCalledWith({ path: '/progetti' });
   });
 });
